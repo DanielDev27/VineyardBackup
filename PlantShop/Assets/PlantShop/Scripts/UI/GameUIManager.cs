@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 public class GameUIManager : MonoBehaviour
 {
     public static GameUIManager Instance;
-    [SerializeField] GameObject pauseMenu;
     [SerializeField] bool isMenuActive;
 
     public bool pause;
@@ -58,7 +57,7 @@ public class GameUIManager : MonoBehaviour
     {
         isPauseRoutineRunning = true;
         yield return new WaitForSeconds(0.1f);
-        pauseMenu.SetActive(true);
+        pauseGroup.GetComponent<Canvas>().enabled = false;
         Cursor.lockState = CursorLockMode.None;
         isMenuActive = true;
         yield return new WaitForSeconds(delay);

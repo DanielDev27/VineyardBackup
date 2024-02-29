@@ -11,7 +11,7 @@ public class MousePosition : MonoBehaviour
     [SerializeField] LayerMask groundLayer;
     [SerializeField] bool canInteract;
     [SerializeField] Vector3 point;
-    void Start()
+    private void Awake()
     {
         Instance = this;
     }
