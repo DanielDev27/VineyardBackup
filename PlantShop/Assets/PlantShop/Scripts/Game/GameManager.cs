@@ -33,6 +33,9 @@ public class GameManager : MonoBehaviour
         currentSeason = seasons[0];
         ChangeFieldAssets();
         SeasonUIManager.Instance.UpdateUIContent(currentSeason.name, seasonsCount);
+        wateringTimer = wateringTimerBase * currentSeason.waterModifier;
+        pruningTimer = pruningTimerBase * currentSeason.pruningModifier;
+        pestControlTimer = pestControlTimerBase * currentSeason.pestModifier;
     }
     void Update()
     {
@@ -55,13 +58,25 @@ public class GameManager : MonoBehaviour
         if (wateringPromptTimer >= wateringTimer & wateringTimerActive)
         {
             wateringTimerActive = false;
+            foreach (GameObject _field in fields)
+            {
+                _field.GetComponent<FieldManager>().TriggerPromptImage(Tool.WateringTool);
+            }
         }
         if (pruningPromptTimer >= pruningTimer & pruningTimerActive)
         {
+            foreach (GameObject _field in fields)
+            {
+                _field.GetComponent<FieldManager>().TriggerPromptImage(Tool.PruningTool);
+            }
             pruningTimerActive = false;
         }
         if (pestControlPromptTimer >= pestControlTimer & pestControlTimerActive)
         {
+            foreach (GameObject _field in fields)
+            {
+                _field.GetComponent<FieldManager>().TriggerPromptImage(Tool.PestControlTool);
+            }
             pestControlTimerActive = false;
         }
         if (timer > seasonTimerMax)
@@ -93,13 +108,13 @@ public class GameManager : MonoBehaviour
         else
         {
             timerActive = true;
-            wateringTimer = wateringTimerBase * currentSeason.waterModifier;
             wateringTimerActive = true;
-            pruningTimer = pruningTimerBase * currentSeason.pruningModifier;
             pruningTimerActive = true;
-            pestControlTimer = pestControlTimerBase * currentSeason.pestModifier;
             pestControlTimerActive = true;
         }
+        wateringTimer = wateringTimerBase * currentSeason.waterModifier;
+        pruningTimer = pruningTimerBase * currentSeason.pruningModifier;
+        pestControlTimer = pestControlTimerBase * currentSeason.pestModifier;
         seasonsCount++;
 
         ChangeFieldAssets();
@@ -114,16 +129,21 @@ public class GameManager : MonoBehaviour
             field.UpdateField(seasonsCount);
         }
     }
-    public void SetWateringPrompt()
+
+    //Reset Timers
+    public void ResetWateringPrompt()
     {
+        wateringPromptTimer = 0;
         wateringTimerActive = true;
     }
-    public void SetPruningPrompt()
+    public void ResetPruningPrompt()
     {
+        pruningPromptTimer = 0;
         pruningTimerActive = true;
     }
-    public void SetPestControlPrompt()
+    public void ResetPestControlPrompt()
     {
+        pestControlPromptTimer = 0;
         pestControlTimerActive = false;
     }
 }

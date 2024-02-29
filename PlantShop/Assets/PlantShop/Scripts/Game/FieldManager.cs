@@ -7,7 +7,8 @@ using UnityEngine.UI;
 
 public class FieldManager : MonoBehaviour
 {
-    [SerializeField] int fieldCross;
+    [SerializeField] public float fieldHealth;
+    [SerializeField] float fieldHealthBase = 50;
     [SerializeField] public List<GameObject> vineAssets;
     [SerializeField] GameObject vineHolder;
     [SerializeField] List<GameObject> vinePrefabs;
@@ -21,6 +22,7 @@ public class FieldManager : MonoBehaviour
     }
     void Start()
     {
+        fieldHealth = fieldHealthBase;
         promptCanvas.GetComponentInChildren<TMP_Text>().transform.LookAt(new Vector3(-MousePosition.Instance.camera.transform.position.x, -MousePosition.Instance.camera.transform.position.y, -MousePosition.Instance.camera.transform.position.z));
         promptCanvas.GetComponentInChildren<Image>().transform.LookAt(new Vector3(-MousePosition.Instance.camera.transform.position.x, -MousePosition.Instance.camera.transform.position.y, -MousePosition.Instance.camera.transform.position.z));
         promptCanvas.GetComponentInChildren<TMP_Text>().enabled = false;
@@ -30,19 +32,19 @@ public class FieldManager : MonoBehaviour
     {
 
     }
+
+    public void fieldHealthModify(int healthChange)
+    {
+        fieldHealth += healthChange;
+    }
+
     [Button]
     public void GenerateField()
     {
-        for (int i = 0; i < fieldCross; i++)
-        {
-            for (int j = 0; j < fieldCross; j++)
-            {
-                GameObject vine = Instantiate(vineHolder);
-                vine.transform.position = this.transform.position + new Vector3(i - 1.5f, 0, j - 1.5f);
-                vine.transform.parent = this.transform;
-                vineAssets.Add(vine);
-            }
-        }
+        GameObject vine = Instantiate(vineHolder);
+        vine.transform.position = this.transform.position;
+        vine.transform.parent = this.transform;
+        vineAssets.Add(vine);
         UpdateField(0);
     }
     [Button]
@@ -60,6 +62,14 @@ public class FieldManager : MonoBehaviour
                 //Create new Model instance
                 _vine.GetComponent<Vine>().vinePrefab = Instantiate(vinePrefabs[vineIndex], _vine.transform.position, Quaternion.identity);
                 _vine.GetComponent<Vine>().vinePrefab.transform.parent = _vine.transform;
+                if (vineIndex == 0)
+                {
+                    _vine.GetComponent<Vine>().vinePrefab.transform.forward = _vine.transform.up;
+                }
+                else
+                {
+                    _vine.GetComponent<Vine>().vinePrefab.transform.forward = _vine.transform.forward;
+                }
             }
         }
     }
