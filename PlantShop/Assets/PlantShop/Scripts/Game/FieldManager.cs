@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
@@ -13,24 +14,84 @@ public class FieldManager : MonoBehaviour
     [SerializeField] GameObject vineHolder;
     [SerializeField] List<GameObject> vinePrefabs;
     [Header("UI Prompts")]
-    [SerializeField] public Tool requiredTool;
+    [SerializeField] public bool requireWateringTool;
+    [SerializeField] public bool requirePruningTool;
+    [SerializeField] public bool requirePestControlTool;
     [SerializeField] public Canvas promptCanvas;
     [SerializeField] public List<Image> promptImages;
+
+    [Header("Timers")]
+    [SerializeField] public bool wateringTimerActive;
+    [SerializeField] public float wateringPromptTimer;
+    [SerializeField] public float wateringTimerBase;
+    [SerializeField] public float wateringTimer;
+    [SerializeField] public bool pestControlTimerActive;
+    [SerializeField] public float pestControlPromptTimer;
+    [SerializeField] public float pestControlTimerBase;
+    [SerializeField] public float pestControlTimer;
+    [SerializeField] public bool pruningTimerActive;
+    [SerializeField] public float pruningPromptTimer;
+    [SerializeField] public float pruningTimerBase;
+    [SerializeField] public float pruningTimer;
     private void Awake()
     {
         GenerateField();
     }
     void Start()
     {
+        wateringTimer = wateringTimerBase * GameManager.Instance.currentSeason.waterModifier;
+        pruningTimer = pruningTimerBase * GameManager.Instance.currentSeason.pruningModifier;
+        pestControlTimer = pestControlTimerBase * GameManager.Instance.currentSeason.pestModifier;
         fieldHealth = fieldHealthBase;
-        promptCanvas.GetComponentInChildren<TMP_Text>().transform.LookAt(new Vector3(-MousePosition.Instance.camera.transform.position.x, -MousePosition.Instance.camera.transform.position.y, -MousePosition.Instance.camera.transform.position.z));
-        promptCanvas.GetComponentInChildren<Image>().transform.LookAt(new Vector3(-MousePosition.Instance.camera.transform.position.x, -MousePosition.Instance.camera.transform.position.y, -MousePosition.Instance.camera.transform.position.z));
+        promptCanvas.transform.LookAt(new Vector3(-MousePosition.Instance.camera.transform.position.x, -MousePosition.Instance.camera.transform.position.y, -MousePosition.Instance.camera.transform.position.z));
         promptCanvas.GetComponentInChildren<TMP_Text>().enabled = false;
-        promptCanvas.GetComponentInChildren<Image>().enabled = false;
+        foreach (Image prompt in promptImages)
+        {
+            prompt.enabled = false;
+        }
     }
     void Update()
     {
+        if (GameManager.Instance.timerActive)
+        {
 
+            if (wateringTimerActive)
+            {
+                wateringPromptTimer += Time.deltaTime;
+            }
+            if (pruningTimerActive)
+            {
+                pruningPromptTimer += Time.deltaTime;
+            }
+            if (pestControlTimerActive)
+            {
+                pestControlPromptTimer += Time.deltaTime;
+            }
+        }
+        if (wateringPromptTimer >= wateringTimer & wateringTimerActive)
+        {
+            wateringTimerActive = false;
+            foreach (GameObject _field in GameManager.Instance.fields)
+            {
+                _field.GetComponent<FieldManager>().TriggerPromptImage(Tool.WateringTool);
+            }
+        }
+        if (pruningPromptTimer >= pruningTimer & pruningTimerActive)
+        {
+            foreach (GameObject _field in GameManager.Instance.fields)
+            {
+                _field.GetComponent<FieldManager>().TriggerPromptImage(Tool.PruningTool);
+            }
+            pruningTimerActive = false;
+        }
+        if (pestControlPromptTimer >= pestControlTimer & pestControlTimerActive)
+        {
+            foreach (GameObject _field in GameManager.Instance.fields)
+            {
+                _field.GetComponent<FieldManager>().TriggerPromptImage(Tool.PestControlTool);
+            }
+            pestControlTimerActive = false;
+        }
     }
 
     public void fieldHealthModify(int healthChange)
@@ -74,36 +135,78 @@ public class FieldManager : MonoBehaviour
         }
     }
     [Button]
-    public void TriggerPromptImage(Tool requiredTool)
+    public void TriggerPromptImage(Tool _requiredTool)
     {
-        switch (requiredTool)
+        switch (_requiredTool)
         {
             case Tool.WateringTool:
-                requiredTool = Tool.WateringTool;
+                requireWateringTool = true;
                 promptCanvas.GetComponentInChildren<TMP_Text>().text = "Watering Tool";
-                //promptCanvas.GetComponentInChildren<Image>().sprite = promptImages[0].sprite;
+                promptImages[0].enabled = true;
                 break;
             case Tool.PruningTool:
-                requiredTool = Tool.PruningTool;
+                requirePruningTool = true;
                 promptCanvas.GetComponentInChildren<TMP_Text>().text = "Pruning Tool";
-                //promptCanvas.GetComponentInChildren<Image>().sprite = promptImages[0].sprite;
+                promptImages[1].enabled = true;
                 break;
             case Tool.PestControlTool:
-                requiredTool = Tool.PestControlTool;
+                requirePestControlTool = true;
                 promptCanvas.GetComponentInChildren<TMP_Text>().text = "Pest Control Tool";
-                //promptCanvas.GetComponentInChildren<Image>().sprite = promptImages[0].sprite;
+                promptImages[2].enabled = true;
                 break;
             default:
                 break;
 
         }
         promptCanvas.GetComponentInChildren<TMP_Text>().enabled = true;
-        //promptCanvas.GetComponentInChildren<Image>().enabled = true;
     }
-    public void ClosePromptImage()
+    public void ClosePromptImage(int promptIndex)
     {
         promptCanvas.GetComponentInChildren<TMP_Text>().enabled = false;
-        promptCanvas.GetComponentInChildren<Image>().enabled = false;
+        promptImages[promptIndex].enabled = false;
+        switch (promptIndex)
+        {
+            case 0:
+                requireWateringTool = false;
+                ResetWateringPrompt();
+                break;
+            case 1:
+                requirePruningTool = false;
+                ResetPruningPrompt();
+                break;
+            case 2:
+                requirePestControlTool = false;
+                ResetPestControlPrompt();
+                break;
+            default:
+                break;
+        }
     }
 
+    internal void ResetPromptTimers(SeasonsSO currentSeason)
+    {
+        wateringTimer = wateringTimerBase * currentSeason.waterModifier;
+        wateringPromptTimer = 0;
+        pruningTimer = pruningTimerBase * currentSeason.pruningModifier;
+        pruningPromptTimer = 0;
+        pestControlTimer = pestControlTimerBase * currentSeason.pestModifier;
+        pestControlPromptTimer = 0;
+    }
+
+    //Reset Timers
+    public void ResetWateringPrompt()
+    {
+        wateringPromptTimer = 0;
+        wateringTimerActive = true;
+    }
+    public void ResetPruningPrompt()
+    {
+        pruningPromptTimer = 0;
+        pruningTimerActive = true;
+    }
+    public void ResetPestControlPrompt()
+    {
+        pestControlPromptTimer = 0;
+        pestControlTimerActive = true;
+    }
 }

@@ -19,27 +19,24 @@ public class EventClick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
     public void OnPointerDown(PointerEventData eventData)
     {
         Debug.Log("Interact with " + this.gameObject.name);
-        if (field.promptCanvas.GetComponentInChildren<TMP_Text>().enabled == true)
+        if (field.requireWateringTool && PlayerToolManager.Instance.assignedTool == Tool.WateringTool && field.promptImages[0].enabled == true)
         {
-            if (field.requiredTool == Tool.WateringTool && PlayerToolManager.Instance.assignedTool == Tool.WateringTool)
-            {
-                Debug.Log("Watering Tool Used");
-                field.ClosePromptImage();
-            }
-            if (field.requiredTool == Tool.PruningTool && PlayerToolManager.Instance.assignedTool == Tool.PruningTool)
-            {
-                Debug.Log("Pruning Tool Used");
-                field.ClosePromptImage();
-            }
-            if (field.requiredTool == Tool.PestControlTool && PlayerToolManager.Instance.assignedTool == Tool.PestControlTool)
-            {
-                Debug.Log("Pest Control Tool Used");
-                field.ClosePromptImage();
-            }
-            else
-            {
-                return;
-            }
+            Debug.Log("Watering Tool Used");
+            field.ClosePromptImage(0);
+        }
+        if (field.requirePruningTool && PlayerToolManager.Instance.assignedTool == Tool.PruningTool && field.promptImages[1].enabled == true)
+        {
+            Debug.Log("Pruning Tool Used");
+            field.ClosePromptImage(1);
+        }
+        if (field.requirePestControlTool && PlayerToolManager.Instance.assignedTool == Tool.PestControlTool && field.promptImages[2].enabled == true)
+        {
+            Debug.Log("Pest Control Tool Used");
+            field.ClosePromptImage(2);
+        }
+        else
+        {
+            return;
         }
     }
 
