@@ -11,13 +11,16 @@ public class GameManager : MonoBehaviour
     [SerializeField] bool timerActive;
     [SerializeField] bool wateringTimerActive;
     [SerializeField] float wateringPromptTimer;
-    [SerializeField] float wateringActionTimer;
+    [SerializeField] float wateringTimerBase;
+    [SerializeField] float wateringTimer;
     [SerializeField] bool pestControlTimerActive;
     [SerializeField] float pestControlPromptTimer;
-    [SerializeField] float pestControlActionTimer;
+    [SerializeField] float pestControlTimerBase;
+    [SerializeField] float pestControlTimer;
     [SerializeField] bool pruningTimerActive;
     [SerializeField] float pruningPromptTimer;
-    [SerializeField] float pruningActionTimer;
+    [SerializeField] float pruningTimerBase;
+    [SerializeField] float pruningTimer;
     [Header("Scene Settings")]
     [SerializeField] List<GameObject> fields;
     [SerializeField] List<SeasonsSO> seasons;
@@ -36,16 +39,28 @@ public class GameManager : MonoBehaviour
         if (timer <= seasonTimerMax && timerActive)
         {
             timer += Time.deltaTime;
+            if (wateringTimerActive)
+            {
+                wateringPromptTimer += Time.deltaTime;
+            }
+            if (pruningTimerActive)
+            {
+                pruningPromptTimer += Time.deltaTime;
+            }
+            if (pestControlTimerActive)
+            {
+                pestControlPromptTimer += Time.deltaTime;
+            }
         }
-        if (timer >= wateringPromptTimer & wateringTimerActive)
+        if (wateringPromptTimer >= wateringTimer & wateringTimerActive)
         {
             wateringTimerActive = false;
         }
-        if (timer >= pruningPromptTimer & pruningTimerActive)
+        if (pruningPromptTimer >= pruningTimer & pruningTimerActive)
         {
             pruningTimerActive = false;
         }
-        if (timer >= pestControlPromptTimer & pestControlTimerActive)
+        if (pestControlPromptTimer >= pestControlTimer & pestControlTimerActive)
         {
             pestControlTimerActive = false;
         }
@@ -59,6 +74,8 @@ public class GameManager : MonoBehaviour
     public void ChangeSeasons()
     {
         //Debug.Log(seasons.Count);
+
+        //Seasons
         if (currentSeason == seasons[seasons.Count - 1])
         {
             currentSeason = seasons[3];
@@ -68,6 +85,7 @@ public class GameManager : MonoBehaviour
             SeasonsSO nextSeason = seasons[seasons.IndexOf(currentSeason) + 1];
             currentSeason = nextSeason;
         }
+        //Timers
         if (currentSeason == seasons[1] || currentSeason == seasons[2])
         {
             timerActive = false;
@@ -75,8 +93,15 @@ public class GameManager : MonoBehaviour
         else
         {
             timerActive = true;
+            wateringTimer = wateringTimerBase * currentSeason.waterModifier;
+            wateringTimerActive = true;
+            pruningTimer = pruningTimerBase * currentSeason.pruningModifier;
+            pruningTimerActive = true;
+            pestControlTimer = pestControlTimerBase * currentSeason.pestModifier;
+            pestControlTimerActive = true;
         }
         seasonsCount++;
+
         ChangeFieldAssets();
         SeasonUIManager.Instance.UpdateUIContent(currentSeason.name, seasonsCount);
     }

@@ -1258,6 +1258,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7658870224923928396, guid: 00dab010a0662864dbc9f047380a0f5e,
         type: 3}
+      propertyPath: seasonTimerMax
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 7658870224923928396, guid: 00dab010a0662864dbc9f047380a0f5e,
+        type: 3}
+      propertyPath: pruningTimerBase
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7658870224923928396, guid: 00dab010a0662864dbc9f047380a0f5e,
+        type: 3}
+      propertyPath: wateringTimerBase
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7658870224923928396, guid: 00dab010a0662864dbc9f047380a0f5e,
+        type: 3}
       propertyPath: fields.Array.data[0]
       value: 
       objectReference: {fileID: 111593999}
@@ -1271,6 +1286,11 @@ PrefabInstance:
       propertyPath: fields.Array.data[2]
       value: 
       objectReference: {fileID: 92478807}
+    - target: {fileID: 7658870224923928396, guid: 00dab010a0662864dbc9f047380a0f5e,
+        type: 3}
+      propertyPath: pestControlTimerBase
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
