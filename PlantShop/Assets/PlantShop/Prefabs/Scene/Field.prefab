@@ -615,15 +615,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fieldHealth: 0
   fieldHealthBase: 50
+  vinesOffset: 0.55
   vineAssets: []
   vineHolder: {fileID: 3191554691800194276, guid: b64dc7faed2fb974b8e0cdacc47e4f4e,
     type: 3}
   vinePrefabs:
-  - {fileID: 4751318026264277560, guid: 7736ba38d0030e240aa3a0b10a422d00, type: 3}
-  - {fileID: 3576662974519855170, guid: b152b322325cdc846953815186fbc348, type: 3}
-  - {fileID: 6958866624691186019, guid: 6a274093e97bad446b120d6ccc50032c, type: 3}
-  - {fileID: 712187791620194136, guid: 0d685d8680798d740a1c7760858235a8, type: 3}
-  - {fileID: 5974644272216243603, guid: 3ae6fa5d987820e468cd25d123dbe39e, type: 3}
+  - {fileID: 2627015304467694593, guid: 2fa8fb9017c1ffd45b4c135d1a0625e4, type: 3}
+  - {fileID: 5577341921296560922, guid: f0c49dfb731bf82438a3a30837dac251, type: 3}
+  - {fileID: 2703363096293508127, guid: 411f9d69a28d7954baaece33bbcb7a53, type: 3}
+  - {fileID: 449109338985528977, guid: 72845681f64186f4caa15054434023f2, type: 3}
   requireWateringTool: 0
   requirePruningTool: 0
   requirePestControlTool: 0
