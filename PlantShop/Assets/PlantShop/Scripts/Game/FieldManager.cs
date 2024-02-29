@@ -21,10 +21,10 @@ public class FieldManager : MonoBehaviour
     }
     void Start()
     {
-        promptCanvas.GetComponentInChildren<TMP_Text>().transform.LookAt(new Vector3(-MousePosition.Instance.camera.transform.position.x, -MousePosition.Instance.camera.transform.position.y, -MousePosition.Instance.camera.transform.position.z));
-        promptCanvas.GetComponentInChildren<Image>().transform.LookAt(new Vector3(-MousePosition.Instance.camera.transform.position.x, -MousePosition.Instance.camera.transform.position.y, -MousePosition.Instance.camera.transform.position.z));
-        promptCanvas.GetComponentInChildren<TMP_Text>().enabled = false;
-        promptCanvas.GetComponentInChildren<Image>().enabled = false;
+        //promptCanvas.GetComponentInChildren<TMP_Text>().transform.LookAt(new Vector3(-MousePosition.Instance.camera.transform.position.x, -MousePosition.Instance.camera.transform.position.y, -MousePosition.Instance.camera.transform.position.z));
+        //promptCanvas.GetComponentInChildren<Image>().transform.LookAt(new Vector3(-MousePosition.Instance.camera.transform.position.x, -MousePosition.Instance.camera.transform.position.y, -MousePosition.Instance.camera.transform.position.z));
+        //promptCanvas.GetComponentInChildren<TMP_Text>().enabled = false;
+        //promptCanvas.GetComponentInChildren<Image>().enabled = false;
     }
     void Update()
     {

@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 8404993740265116941}
   - component: {fileID: 8482413001773085796}
   - component: {fileID: 2335324771782483644}
+  - component: {fileID: 3919626256824404216}
   m_Layer: 0
   m_Name: PlayerCanvas
   m_TagString: Untagged
@@ -177,6 +178,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 0
+--- !u!225 &3919626256824404216
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920008077482914636}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &2863230531090945515
 GameObject:
   m_ObjectHideFlags: 0
@@ -188,6 +201,7 @@ GameObject:
   - component: {fileID: 1316925264480320700}
   - component: {fileID: 4542932066268967778}
   - component: {fileID: 3969002990742766258}
+  - component: {fileID: 6895680382696400189}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -246,3 +260,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assignedTool: 0
   playerImage: {fileID: 1168184178577733175}
+--- !u!65 &6895680382696400189
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2863230531090945515}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}

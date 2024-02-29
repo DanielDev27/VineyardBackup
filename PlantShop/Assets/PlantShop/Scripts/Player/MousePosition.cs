@@ -22,11 +22,12 @@ public class MousePosition : MonoBehaviour
         PlayerToolManager.Instance.playerImage.transform.position = Mouse.current.position.ReadValue();
         Ray ray = camera.ScreenPointToRay(Mouse.current.position.ReadValue());
         //Debug.Log(ray);
-        if (Physics.Raycast(ray, out RaycastHit raycastHitGeneral, float.MaxValue, groundLayer))
+        if (Physics.Raycast(ray, out RaycastHit raycastHitGeneral, Mathf.Infinity, groundLayer))
         {
             point = raycastHitGeneral.point;
-            transform.position = raycastHitGeneral.point;
-            if (Physics.Raycast(ray, out RaycastHit raycastHitInteract, float.MaxValue, interactionLayer))
+            transform.position = point;
+            Debug.DrawRay(ray.origin, point - ray.origin, Color.black);
+            if (Physics.Raycast(ray, out RaycastHit raycastHitInteract, Mathf.Infinity, interactionLayer))
             {
                 canInteract = true;
             }
