@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83c2950bffadff841a2d8f477ff25195, type: 3}
   m_Name: Tutorial 3
   m_EditorClassIdentifier: 
-  growthModifier: 0
-  pestModifier: 0
-  pruningModifier: 0
-  waterModifier: 0
+  growthModifier: 1
+  pestModifier: 1
+  pruningModifier: 1
+  waterModifier: 1
