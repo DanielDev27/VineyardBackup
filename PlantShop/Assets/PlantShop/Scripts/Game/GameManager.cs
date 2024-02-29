@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     {
         currentSeason = seasons[0];
         ChangeFieldAssets();
-        //SeasonUIManager.Instance.UpdateUIContent(currentSeason.name, seasonsCount);
+        SeasonUIManager.Instance.UpdateUIContent(currentSeason.name, seasonsCount);
     }
     void Update()
     {

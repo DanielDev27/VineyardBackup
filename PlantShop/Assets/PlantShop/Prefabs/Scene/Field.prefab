@@ -385,13 +385,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cec8c8b57dfaa8e4aabed9fd2f888863, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fieldCross: 0
+  fieldCross: 4
   vineAssets: []
   vineHolder: {fileID: 3191554691800194276, guid: b64dc7faed2fb974b8e0cdacc47e4f4e,
     type: 3}
   vinePrefabs:
   - {fileID: 3049914009290833919, guid: a8c77d9339f156c42ac8161dcd6f6c3f, type: 3}
   - {fileID: 1065568042322320368, guid: 44bef42a7b1a9774e8bba20fdd380700, type: 3}
+  camera: {fileID: 0}
   requiredTool: 0
   promptCanvas: {fileID: 5552167331118062139}
   promptImages: []
