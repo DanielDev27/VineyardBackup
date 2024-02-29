@@ -45,17 +45,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 0
-  seasonTimerMax: 0
+  seasonTimerMax: 60
   timerActive: 0
   wateringTimerActive: 0
   wateringPromptTimer: 0
-  wateringActionTimer: 0
+  wateringTimerBase: 15
+  wateringTimer: 0
   pestControlTimerActive: 0
   pestControlPromptTimer: 0
-  pestControlActionTimer: 0
+  pestControlTimerBase: 25
+  pestControlTimer: 0
   pruningTimerActive: 0
   pruningPromptTimer: 0
-  pruningActionTimer: 0
+  pruningTimerBase: 20
+  pruningTimer: 0
   fields:
   - {fileID: 0}
   - {fileID: 0}
