@@ -46,7 +46,6 @@ public class GameManager : MonoBehaviour
     public void ChangeSeasons()
     {
         //Debug.Log(seasons.Count);
-
         //Seasons
         if (currentSeason == seasons[seasons.Count - 1])
         {
@@ -79,6 +78,7 @@ public class GameManager : MonoBehaviour
         {
             yearsCount++;
         }
+        ScriptReader.Instance.LoadTutorial(seasonsCount);
 
         SeasonUIManager.Instance.UpdateYear(yearsCount);
         SeasonUIManager.Instance.UpdateSeason(currentSeason.season);

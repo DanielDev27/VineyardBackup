@@ -8,10 +8,14 @@ using DG.Tweening;
 public class SeasonUIManager : MonoBehaviour
 {
     public static SeasonUIManager Instance;
+    [Header("Seasons")]
     [SerializeField] List<Image> seasonImage;
+    [Header("Years")]
     [SerializeField] Image yearImage;
     [SerializeField] int yearIndex;
     [SerializeField] List<Sprite> yearImages;
+    [Header("Tools")]
+    [SerializeField] public List<Image> toolHighlight;
     private void Awake()
     {
         Instance = this;
@@ -55,6 +59,23 @@ public class SeasonUIManager : MonoBehaviour
                 seasonImage[1].color = new Color(seasonImage[1].color.r, seasonImage[1].color.g, seasonImage[1].color.b, 0.5f);
                 seasonImage[2].color = new Color(seasonImage[2].color.r, seasonImage[2].color.g, seasonImage[2].color.b, 0.5f);
                 seasonImage[3].color = new Color(seasonImage[3].color.r, seasonImage[3].color.g, seasonImage[3].color.b, 0.5f);
+                break;
+            default:
+                break;
+        }
+    }
+    public void SetHighlight(int _tutorialIndex)
+    {
+        switch (_tutorialIndex)
+        {
+            case 1:
+                toolHighlight[0].enabled = true;
+                break;
+            case 2:
+                toolHighlight[1].enabled = true;
+                break;
+            case 3:
+                toolHighlight[2].enabled = true;
                 break;
             default:
                 break;

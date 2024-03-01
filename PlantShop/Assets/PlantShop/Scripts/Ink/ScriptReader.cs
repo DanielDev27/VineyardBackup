@@ -1,20 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.UI;
 using Ink.Runtime;
 using TMPro;
 using Sirenix.OdinInspector;
+using System;
 
 public class ScriptReader : MonoBehaviour
 {
+    public static ScriptReader Instance;
     [Header("Basic Inputs")]
     [SerializeField] private TextAsset _inkJsonAsset;
     private Story _story;
     [SerializeField] public Canvas tutorialCanvas;
     [SerializeField] TMP_Text tutorialText;
-
     [SerializeField] private bool _space;
 
     [Header("Debug Visable")]
@@ -23,6 +22,7 @@ public class ScriptReader : MonoBehaviour
     [SerializeField, ShowInInspector] TextAsset[] storyArray;
     private void Awake()
     {
+        Instance = this;
         tutorialText.text = "";
         _inkJsonAsset = storyArray[0];
         LoadStory();
@@ -30,8 +30,11 @@ public class ScriptReader : MonoBehaviour
     }
     void LoadStory()
     {
+        tutorialCanvas.enabled = true;
         _story = new Story(_inkJsonAsset.text);
+        _story.BindExternalFunction("Highlight", (int tutorialIndex) => SeasonUIManager.Instance.SetHighlight(tutorialIndex));
     }
+
     public void DisplayNextLine()
     {
         if (_story.canContinue) //checking that there is more content to display
@@ -53,9 +56,16 @@ public class ScriptReader : MonoBehaviour
     }
     public void LoadTutorial(int storyIndex)
     {
-        _inkJsonAsset = storyArray[storyIndex];
-        LoadStory();
-        DisplayNextLine();
+        if (storyIndex <= 2)
+        {
+            _inkJsonAsset = storyArray[storyIndex];
+            LoadStory();
+            DisplayNextLine();
+        }
+        else
+        {
+            tutorialCanvas.enabled = false;
+        }
     }
 
 }

@@ -22,6 +22,8 @@ public class GameUIManager : MonoBehaviour
         Instance = this;
         Cursor.lockState = CursorLockMode.Confined;
     }
+
+
     public void Pause(InputAction.CallbackContext context)
     {
         if (context.performed)
