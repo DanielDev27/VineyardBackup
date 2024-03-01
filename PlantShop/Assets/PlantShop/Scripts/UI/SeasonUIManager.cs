@@ -9,17 +9,21 @@ public class SeasonUIManager : MonoBehaviour
     public static SeasonUIManager Instance;
     [SerializeField] List<Image> seasonImage;
     [SerializeField] List<Image> backgroundSeason;
-    [SerializeField] TextMeshProUGUI timeText;
-    void Start()
+    [SerializeField] Image yearImage;
+    [SerializeField] List<Sprite> yearImages;
+    private void Awake()
     {
         Instance = this;
+    }
+    void Start()
+    {
     }
     void Update()
     {
 
     }
-    public void UpdateUIContent(string season, int seasonIndex)
+    public void UpdateUIContent(int yearIndex)
     {
-        timeText.text = season;
+        yearImage.sprite = yearImages[yearIndex];
     }
 }

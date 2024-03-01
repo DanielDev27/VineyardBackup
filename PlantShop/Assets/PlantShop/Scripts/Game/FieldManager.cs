@@ -46,7 +46,7 @@ public class FieldManager : MonoBehaviour
         pestControlTimer = pestControlTimerBase * GameManager.Instance.currentSeason.pestModifier;
         fieldHealth = fieldHealthBase;
         promptCanvas.transform.LookAt(new Vector3(-MousePosition.Instance.camera.transform.position.x, -MousePosition.Instance.camera.transform.position.y, -MousePosition.Instance.camera.transform.position.z));
-        promptCanvas.GetComponentInChildren<TMP_Text>().enabled = false;
+        //promptCanvas.GetComponentInChildren<TMP_Text>().enabled = false;
         foreach (Image prompt in promptImages)
         {
             prompt.enabled = false;
@@ -137,28 +137,28 @@ public class FieldManager : MonoBehaviour
         {
             case Tool.WateringTool:
                 requireWateringTool = true;
-                promptCanvas.GetComponentInChildren<TMP_Text>().text = "Watering Tool";
+                //promptCanvas.GetComponentInChildren<TMP_Text>().text = "Watering Tool";
                 promptImages[0].enabled = true;
                 break;
             case Tool.PruningTool:
                 requirePruningTool = true;
-                promptCanvas.GetComponentInChildren<TMP_Text>().text = "Pruning Tool";
+                //promptCanvas.GetComponentInChildren<TMP_Text>().text = "Pruning Tool";
                 promptImages[1].enabled = true;
                 break;
             case Tool.PestControlTool:
                 requirePestControlTool = true;
-                promptCanvas.GetComponentInChildren<TMP_Text>().text = "Pest Control Tool";
+                //promptCanvas.GetComponentInChildren<TMP_Text>().text = "Pest Control Tool";
                 promptImages[2].enabled = true;
                 break;
             default:
                 break;
 
         }
-        promptCanvas.GetComponentInChildren<TMP_Text>().enabled = true;
+        //promptCanvas.GetComponentInChildren<TMP_Text>().enabled = true;
     }
     public void ClosePromptImage(int promptIndex)
     {
-        promptCanvas.GetComponentInChildren<TMP_Text>().enabled = false;
+        //promptCanvas.GetComponentInChildren<TMP_Text>().enabled = false;
         promptImages[promptIndex].enabled = false;
         switch (promptIndex)
         {

@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     [Header("Seasons Tracker")]
     [SerializeField] int totalSeasons;
     [SerializeField] int seasonsCount;
+    [SerializeField] int yearsCount;
     [SerializeField] public SeasonsSO currentSeason;
     private void Awake()
     {
@@ -25,7 +26,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         ChangeFieldAssets();
-        SeasonUIManager.Instance.UpdateUIContent(currentSeason.name, seasonsCount);
+        SeasonUIManager.Instance.UpdateUIContent(yearsCount);
     }
     void Update()
     {
@@ -77,9 +78,13 @@ public class GameManager : MonoBehaviour
         }
 
         seasonsCount++;
+        if (seasonsCount % 4 == 0 && seasonsCount != 0)
+        {
+            yearsCount++;
+        }
 
         ChangeFieldAssets();
-        SeasonUIManager.Instance.UpdateUIContent(currentSeason.name, seasonsCount);
+        SeasonUIManager.Instance.UpdateUIContent(yearsCount);
     }
 
     public void ChangeFieldAssets()
