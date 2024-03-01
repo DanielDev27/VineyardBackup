@@ -565,6 +565,7 @@ MonoBehaviour:
   - {fileID: 1012262156}
   - {fileID: 581734197}
   yearImage: {fileID: 464942180}
+  yearIndex: 0
   yearImages:
   - {fileID: 21300000, guid: 2a7d601290694264a9e7d749d160543b, type: 3}
   - {fileID: 21300000, guid: 3ef0acdf9327a3d4eafaddbacbbe90ea, type: 3}
@@ -1835,6 +1836,23 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -300
       objectReference: {fileID: 0}
+    - target: {fileID: 4483536932383306064, guid: 172c49a9c3823f94f836a92668bdba62,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: b4597b12ef65cd14595cb5986f793320,
+        type: 2}
+    - target: {fileID: 4483536932383306064, guid: 172c49a9c3823f94f836a92668bdba62,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 8777256374300296168, guid: b4597b12ef65cd14595cb5986f793320,
+        type: 2}
+    - target: {fileID: 4483536932383306064, guid: 172c49a9c3823f94f836a92668bdba62,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4666108501237239814, guid: 172c49a9c3823f94f836a92668bdba62,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -1887,6 +1905,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6571630088661285571, guid: 172c49a9c3823f94f836a92668bdba62,
         type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: b4597b12ef65cd14595cb5986f793320,
+        type: 2}
+    - target: {fileID: 6571630088661285571, guid: 172c49a9c3823f94f836a92668bdba62,
+        type: 3}
       propertyPath: m_fontColor.b
       value: 0
       objectReference: {fileID: 0}
@@ -1902,6 +1926,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6571630088661285571, guid: 172c49a9c3823f94f836a92668bdba62,
         type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 8777256374300296168, guid: b4597b12ef65cd14595cb5986f793320,
+        type: 2}
+    - target: {fileID: 6571630088661285571, guid: 172c49a9c3823f94f836a92668bdba62,
+        type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4278190080
       objectReference: {fileID: 0}
@@ -1914,6 +1944,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_HorizontalAlignment
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6571630088661285571, guid: 172c49a9c3823f94f836a92668bdba62,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6737694501945732692, guid: 172c49a9c3823f94f836a92668bdba62,
         type: 3}
