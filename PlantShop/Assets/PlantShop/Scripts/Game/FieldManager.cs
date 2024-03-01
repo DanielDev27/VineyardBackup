@@ -10,6 +10,7 @@ public class FieldManager : MonoBehaviour
 {
     [SerializeField] public float fieldHealth;
     [SerializeField] float fieldHealthBase = 50;
+    [SerializeField] float vinesOffset;
     [SerializeField] public List<GameObject> vineAssets;
     [SerializeField] GameObject vineHolder;
     [SerializeField] List<GameObject> vinePrefabs;
@@ -33,6 +34,7 @@ public class FieldManager : MonoBehaviour
     [SerializeField] public float pruningPromptTimer;
     [SerializeField] public float pruningTimerBase;
     [SerializeField] public float pruningTimer;
+
     private void Awake()
     {
         GenerateField();
@@ -121,16 +123,10 @@ public class FieldManager : MonoBehaviour
                     DestroyImmediate(_vineExisting.gameObject, true);
                 }
                 //Create new Model instance
-                _vine.GetComponent<Vine>().vinePrefab = Instantiate(vinePrefabs[vineIndex], _vine.transform.position, Quaternion.identity);
+                _vine.GetComponent<Vine>().vinePrefab = Instantiate(vinePrefabs[vineIndex], _vine.transform.position + Vector3.up * vinesOffset, Quaternion.identity);
                 _vine.GetComponent<Vine>().vinePrefab.transform.parent = _vine.transform;
-                if (vineIndex == 0)
-                {
-                    _vine.GetComponent<Vine>().vinePrefab.transform.forward = _vine.transform.up;
-                }
-                else
-                {
-                    _vine.GetComponent<Vine>().vinePrefab.transform.forward = _vine.transform.forward;
-                }
+                _vine.GetComponent<Vine>().vinePrefab.transform.forward = _vine.transform.up;
+
             }
         }
     }
