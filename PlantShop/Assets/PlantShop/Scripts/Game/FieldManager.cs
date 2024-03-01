@@ -17,6 +17,7 @@ public class FieldManager : MonoBehaviour
     [SerializeField] public bool requirePestControlTool;
     [SerializeField] public Canvas promptCanvas;
     [SerializeField] public List<Image> promptImages;
+    [SerializeField] public List<Image> timerImages;
 
     [Header("Timers")]
     [SerializeField] public bool wateringTimerActive;
@@ -47,6 +48,10 @@ public class FieldManager : MonoBehaviour
         foreach (Image prompt in promptImages)
         {
             prompt.enabled = false;
+        }
+        foreach (Image timer in timerImages)
+        {
+            timer.enabled = false;
         }
     }
     void Update()
@@ -136,16 +141,19 @@ public class FieldManager : MonoBehaviour
                 requireWateringTool = true;
                 //promptCanvas.GetComponentInChildren<TMP_Text>().text = "Watering Tool";
                 promptImages[0].enabled = true;
+                timerImages[0].enabled = true;
                 break;
             case Tool.PruningTool:
                 requirePruningTool = true;
                 //promptCanvas.GetComponentInChildren<TMP_Text>().text = "Pruning Tool";
                 promptImages[1].enabled = true;
+                timerImages[1].enabled = true;
                 break;
             case Tool.PestControlTool:
                 requirePestControlTool = true;
                 //promptCanvas.GetComponentInChildren<TMP_Text>().text = "Pest Control Tool";
                 promptImages[2].enabled = true;
+                timerImages[2].enabled = true;
                 break;
             default:
                 break;
@@ -157,6 +165,7 @@ public class FieldManager : MonoBehaviour
     {
         //promptCanvas.GetComponentInChildren<TMP_Text>().enabled = false;
         promptImages[promptIndex].enabled = false;
+        timerImages[promptIndex].enabled = false;
         switch (promptIndex)
         {
             case 0:
