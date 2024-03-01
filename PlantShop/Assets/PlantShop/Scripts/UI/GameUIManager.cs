@@ -14,6 +14,9 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] int menuScene;
     [SerializeField] CanvasGroup pauseGroup;
     [SerializeField] CanvasGroup loadingGroup;
+
+    [Header("Tutorial")]
+    [SerializeField] Canvas tutorialCanvas;
     private void Awake()
     {
         Instance = this;

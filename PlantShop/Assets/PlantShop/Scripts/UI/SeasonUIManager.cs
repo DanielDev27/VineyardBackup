@@ -7,7 +7,8 @@ using TMPro;
 public class SeasonUIManager : MonoBehaviour
 {
     public static SeasonUIManager Instance;
-    [SerializeField] Image seasonImage;
+    [SerializeField] List<Image> seasonImage;
+    [SerializeField] List<Image> backgroundSeason;
     [SerializeField] TextMeshProUGUI timeText;
     void Start()
     {
