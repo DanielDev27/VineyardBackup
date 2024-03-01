@@ -508,6 +508,7 @@ GameObject:
   - component: {fileID: 561914425}
   - component: {fileID: 561914427}
   - component: {fileID: 561914426}
+  - component: {fileID: 561914428}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -575,6 +576,27 @@ MonoBehaviour:
   pauseGroup: {fileID: 2067894695}
   loadingGroup: {fileID: 819314747}
   tutorialCanvas: {fileID: 8378661795596541817}
+--- !u!114 &561914428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 561914424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1904d4a6bec7e784792e994b957eb4aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inkJsonAsset: {fileID: 0}
+  tutorialCanvas: {fileID: 8378661795596541817}
+  tutorialText: {fileID: 8378661795596541819}
+  _space: 0
+  seasonIndex: 0
+  storyArray:
+  - {fileID: 4900000, guid: a0884b1d69d574f478d2d8099b681ef4, type: 3}
+  - {fileID: 4900000, guid: 37ae2865ede21e2499cf0f6e26aab715, type: 3}
+  - {fileID: 4900000, guid: 6ce4b698d9cf0d44a88ad9e35575fa32, type: 3}
 --- !u!1001 &811023327
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1759,6 +1781,51 @@ PrefabInstance:
       propertyPath: m_Name
       value: TutorialCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 4666108501237239814, guid: 172c49a9c3823f94f836a92668bdba62,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4666108501237239814, guid: 172c49a9c3823f94f836a92668bdba62,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4666108501237239814, guid: 172c49a9c3823f94f836a92668bdba62,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 561914428}
+    - target: {fileID: 4666108501237239814, guid: 172c49a9c3823f94f836a92668bdba62,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4666108501237239814, guid: 172c49a9c3823f94f836a92668bdba62,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: NextLine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4666108501237239814, guid: 172c49a9c3823f94f836a92668bdba62,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ScriptReader, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4666108501237239814, guid: 172c49a9c3823f94f836a92668bdba62,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6571630088661285571, guid: 172c49a9c3823f94f836a92668bdba62,
+        type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 6571630088661285571, guid: 172c49a9c3823f94f836a92668bdba62,
+        type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1776,6 +1843,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 8378661795596541816}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8378661795596541819 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6571630088661285571, guid: 172c49a9c3823f94f836a92668bdba62,
+    type: 3}
+  m_PrefabInstance: {fileID: 8378661795596541816}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
