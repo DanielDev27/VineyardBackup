@@ -22,9 +22,7 @@ public class GameUIManager : MonoBehaviour
         Instance = this;
         Cursor.lockState = CursorLockMode.Confined;
     }
-
-
-    public void Pause(InputAction.CallbackContext context)
+    public void Pause(InputAction.CallbackContext context)//Player input function to pause the game
     {
         if (context.performed)
         {
@@ -32,8 +30,7 @@ public class GameUIManager : MonoBehaviour
             PauseMenu(pause);
         }
     }
-
-    public void PauseMenu(bool isPaused)
+    public void PauseMenu(bool isPaused)//Open the pause menu
     {
         isMenuActive = isPaused;
         if (isPaused)
@@ -44,19 +41,23 @@ public class GameUIManager : MonoBehaviour
             Time.timeScale = 0f;
         }
     }
-    public void ResumeGame()
+    public void ResumeGame()//Resume the game
     {
         if (isPauseRoutineRunning)
         {
             StopCoroutine(WaitForPause(0f));
         }
-
         Time.timeScale = 1f;
         pauseGroup.GetComponent<Canvas>().enabled = false;
         Cursor.lockState = CursorLockMode.Confined;
         isMenuActive = false;
-
         pause = false;
+    }
+    public void ReturnToMenu()//Go to the main menu
+    {
+        pauseGroup.DOFade(0, 0.3f);
+        loadingGroup.DOFade(1, 0.3f);
+        SceneLoaderManager.Instance.LoadScene(menuScene);
     }
     IEnumerator WaitForPause(float delay)
     {
@@ -69,11 +70,5 @@ public class GameUIManager : MonoBehaviour
         Time.timeScale = 0f;
         yield return new WaitForSeconds(0.01f);
         isPauseRoutineRunning = false;
-    }
-    public void ReturnToMenu()
-    {
-        pauseGroup.DOFade(0, 0.3f);
-        loadingGroup.DOFade(1, 0.3f);
-        SceneLoaderManager.Instance.LoadScene(menuScene);
     }
 }

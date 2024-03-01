@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,27 +10,21 @@ public class PlayerToolManager : MonoBehaviour
     {
         Instance = this;
     }
-    void Update()
-    {
-
-    }
+    //Assign the tool being used by the player
     public void AssignWateringTool()
     {
         assignedTool = Tool.WateringTool;
-        //playerImage = wateringToolImage;
     }
     public void AssignPruningTool()
     {
         assignedTool = Tool.PruningTool;
-        //playerImage = pruningToolImage;
     }
     public void AssignPestControlTool()
     {
         assignedTool = Tool.PestControlTool;
-        //playerImage = pestControlToolImage;
     }
 }
-public enum Tool
+public enum Tool //The tools the player can be assigned
 {
     WateringTool,
     PruningTool,

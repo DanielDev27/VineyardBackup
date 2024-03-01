@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Ink.Runtime;
 using TMPro;
@@ -15,8 +13,7 @@ public class ScriptReader : MonoBehaviour
     [SerializeField] TMP_Text tutorialText;
     [SerializeField] private bool _space;
 
-    [Header("Debug Visable")]
-
+    [Header("Debug Visible")]
     [SerializeField] private int seasonIndex;
     [SerializeField, ShowInInspector] TextAsset[] storyArray;
     private void Awake()
@@ -27,7 +24,7 @@ public class ScriptReader : MonoBehaviour
         LoadStory();
         DisplayNextLine();
     }
-    void LoadStory()
+    void LoadStory()//Load up the Ink Text script
     {
         tutorialCanvas.enabled = true;
         _story = new Story(_inkJsonAsset.text);
@@ -67,5 +64,4 @@ public class ScriptReader : MonoBehaviour
             tutorialCanvas.enabled = false;
         }
     }
-
 }

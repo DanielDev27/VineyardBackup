@@ -12,22 +12,18 @@ public class MainMenuManager : MonoBehaviour
     [Header("Loading Screen")]
     public GameObject loadingScreen;
     public CanvasGroup loadingMenu;
-
     private void Awake()
     {
         Time.timeScale = 1f;
     }
-
     private void Start()
     {
         AudioManager.Instance.PlayMainMenu();
     }
-
     public void SwitchToLoadingScreen()
     {
         StartCoroutine(SwitchToLoading());
     }
-
     IEnumerator SwitchToLoading()
     {
         mainMenu.DOFade(0, 0.3f);

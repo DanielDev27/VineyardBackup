@@ -2,17 +2,13 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using DG.Tweening;
-
 public class SceneLoaderManager : MonoBehaviour
 {
     public static SceneLoaderManager Instance;
     [Header("Loading Screen")]
     public GameObject loadingScreen;
     public Image loadingProgressBar;
-
     [SerializeField] bool isActive;
-
     private void Awake()
     {
         Instance = this;

@@ -22,21 +22,22 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        currentSeason = seasons[0];
+        currentSeason = seasons[0];//Starts at first season
     }
     void Start()
     {
-        ChangeFieldAssets();
+        ChangeFieldAssets();//Spawn Vines
         SeasonUIManager.Instance.UpdateYear(yearsCount);
         SeasonUIManager.Instance.UpdateSeason(currentSeason.season);
     }
     void Update()
     {
+        //General Timer
         if (timer <= seasonTimerMax && timerActive)
         {
             timer += Time.deltaTime;
         }
-
+        //Reset timer and Change Season
         if (timer > seasonTimerMax)
         {
             timer = 0;
@@ -49,22 +50,22 @@ public class GameManager : MonoBehaviour
         //Debug.Log(seasons.Count);
         //Seasons
         if (currentSeason == seasons[seasons.Count - 1])
-        {
+        {//Reset back to 4th season if you reach the end of the list
             currentSeason = seasons[3];
         }
         else
-        {
+        {//Increase the season index and assign the new season
             SeasonsSO nextSeason = seasons[seasons.IndexOf(currentSeason) + 1];
             currentSeason = nextSeason;
         }
         SeasonUIManager.Instance.UpdateSeason(currentSeason.season);
         //Timers
         if (currentSeason == seasons[1] || currentSeason == seasons[2])
-        {
+        {//Timer isn't active during tutorials
             timerActive = false;
         }
         else
-        {
+        {//Activate all the field timers when the main timer is active
             timerActive = true;
             foreach (GameObject _field in fields)
             {
@@ -75,21 +76,20 @@ public class GameManager : MonoBehaviour
         }
         seasonsCount++;
         if (seasonsCount % 4 == 0 && seasonsCount != 0)
-        {
+        {//If 4 seasons pass, increase the year
             yearsCount++;
         }
-        ScriptReader.Instance.LoadTutorial(seasonsCount);
 
+        ScriptReader.Instance.LoadTutorial(seasonsCount);//Load the tutorial based on the season
         SeasonUIManager.Instance.UpdateYear(yearsCount);
         SeasonUIManager.Instance.UpdateSeason(currentSeason.season);
         ChangeFieldAssets();
         foreach (GameObject _field in fields)
-        {
+        {//Reset all the timers in the fields
             _field.GetComponent<FieldManager>().ResetPromptTimers(currentSeason);
         }
-
     }
-    public void ChangeFieldAssets()
+    public void ChangeFieldAssets()//Call an update to the vine assets in each field
     {
         List<FieldManager> fieldManagers = new List<FieldManager>(FindObjectsOfType<FieldManager>());
         foreach (FieldManager field in fieldManagers)
@@ -97,8 +97,7 @@ public class GameManager : MonoBehaviour
             field.UpdateField(seasonsCount);
         }
     }
-
-    public void SetPrompts(int _tutorialIndex)
+    public void SetPrompts(int _tutorialIndex)//Activating the action prompt timers specifically for the tutorials
     {
         timerActive = true;
         switch (_tutorialIndex)
@@ -128,7 +127,7 @@ public class GameManager : MonoBehaviour
                 break;
         }
     }
-    public void TutorialTaskComplete()
+    public void TutorialTaskComplete()//Tracking the completed tasks during the tutorial in order to change the season and progress
     {
         tutorialTaskCount++;
         if (seasonsCount == 0 && tutorialTaskCount == 3)

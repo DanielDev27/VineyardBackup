@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
-
 public class FieldManager : MonoBehaviour
 {
     [SerializeField] public float fieldHealth;
@@ -37,16 +36,19 @@ public class FieldManager : MonoBehaviour
 
     private void Awake()
     {
-        GenerateField();
+        GenerateField();//Generate the empty vine holders in the field
     }
     void Start()
     {
+        //Assign the water timers limits
         wateringTimer = wateringTimerBase * GameManager.Instance.currentSeason.waterModifier;
         pruningTimer = pruningTimerBase * GameManager.Instance.currentSeason.pruningModifier;
         pestControlTimer = pestControlTimerBase * GameManager.Instance.currentSeason.pestModifier;
+        //Set the health of the field
         fieldHealth = fieldHealthBase;
+        //Set the canvases to look at the camera
         promptCanvas.transform.LookAt(new Vector3(-MousePosition.Instance.camera.transform.position.x, -MousePosition.Instance.camera.transform.position.y, -MousePosition.Instance.camera.transform.position.z));
-        //promptCanvas.GetComponentInChildren<TMP_Text>().enabled = false;
+        //Turn off the prompt images and timer images
         foreach (Image prompt in promptImages)
         {
             prompt.enabled = false;
@@ -60,7 +62,7 @@ public class FieldManager : MonoBehaviour
     {
         if (GameManager.Instance.timerActive)
         {
-            //Action Timers waiting
+            //Action Timers for waiting - Counting up
             if (wateringTimerActive)
             {
                 wateringPromptTimer += Time.deltaTime;
@@ -73,7 +75,7 @@ public class FieldManager : MonoBehaviour
             {
                 pestControlPromptTimer += Time.deltaTime;
             }
-            //Action Timers Count Down
+            //Action Timers for reaction priority - Count Down
             if (timerImages[0].isActiveAndEnabled)
             {
                 timerImages[0].fillAmount -= Time.deltaTime / actionTimerMax;
@@ -107,13 +109,13 @@ public class FieldManager : MonoBehaviour
         }
     }
 
-    public void fieldHealthModify(int healthChange)
+    public void fieldHealthModify(int healthChange)//update the Field health
     {
         fieldHealth += healthChange;
     }
 
     [Button]
-    public void GenerateField()
+    public void GenerateField()//Make the vine holders
     {
         GameObject vine = Instantiate(vineHolder);
         vine.transform.position = this.transform.position;
@@ -122,14 +124,14 @@ public class FieldManager : MonoBehaviour
         UpdateField(0);
     }
     [Button]
-    public void UpdateField(int vineIndex)
+    public void UpdateField(int vineIndex)//Change the vine prefabs in the vine holders
     {
         foreach (GameObject _vine in vineAssets)
         {
             if (_vine.TryGetComponent(out Vine component))
             {
                 if (_vine.GetComponent<Vine>().vinePrefab != null)
-                {
+                {//Destroy the old prefab
                     GameObject _vineExisting = _vine.GetComponent<Vine>().vinePrefab.gameObject;
                     DestroyImmediate(_vineExisting.gameObject, true);
                 }
@@ -142,41 +144,35 @@ public class FieldManager : MonoBehaviour
         }
     }
     [Button]
-    public void TriggerPromptImage(Tool _requiredTool)
+    public void TriggerPromptImage(Tool _requiredTool)//Activate the prompt Images and timers
     {
         switch (_requiredTool)
         {
             case Tool.WateringTool:
                 requireWateringTool = true;
-                //promptCanvas.GetComponentInChildren<TMP_Text>().text = "Watering Tool";
                 promptImages[0].enabled = true;
                 timerImages[0].enabled = true;
                 timerImages[0].fillAmount = actionTimerMax;
                 break;
             case Tool.PruningTool:
                 requirePruningTool = true;
-                //promptCanvas.GetComponentInChildren<TMP_Text>().text = "Pruning Tool";
                 promptImages[1].enabled = true;
                 timerImages[1].enabled = true;
                 timerImages[1].fillAmount = actionTimerMax;
                 break;
             case Tool.PestControlTool:
                 requirePestControlTool = true;
-                //promptCanvas.GetComponentInChildren<TMP_Text>().text = "Pest Control Tool";
                 promptImages[2].enabled = true;
                 timerImages[2].enabled = true;
                 timerImages[2].fillAmount = actionTimerMax;
                 break;
             default:
                 break;
-
         }
-        //promptCanvas.GetComponentInChildren<TMP_Text>().enabled = true;
     }
 
-    public void ClosePromptImage(int promptIndex)
+    public void ClosePromptImage(int promptIndex)//Close and turn off the prompt images and timers
     {
-        //promptCanvas.GetComponentInChildren<TMP_Text>().enabled = false;
         promptImages[promptIndex].enabled = false;
         timerImages[promptIndex].enabled = false;
         switch (promptIndex)
@@ -218,8 +214,7 @@ public class FieldManager : MonoBehaviour
                 break;
         }
     }
-
-    internal void ResetPromptTimers(SeasonsSO currentSeason)
+    internal void ResetPromptTimers(SeasonsSO currentSeason)//Reset the prompt timers at the end of a season
     {
         wateringTimer = wateringTimerBase * currentSeason.waterModifier;
         wateringPromptTimer = 0;
@@ -229,7 +224,7 @@ public class FieldManager : MonoBehaviour
         pestControlPromptTimer = 0;
     }
 
-    //Reset Timers
+    //Reset Timers after completing the task
     public void ResetWateringPrompt()
     {
         wateringPromptTimer = 0;

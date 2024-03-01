@@ -10,17 +10,13 @@ namespace DanielUI {
         public Image progressBar;
         [SerializeField] float progress;
         public float transitionDuration = 1f;
-
         private AsyncOperation sceneLoadOperation;
         static SceneLoader instance;
         [SerializeField] string StartScene;
         [SerializeField] string NextScene;
-        
         public void LoadScene () {
-            // Start the transition process
             StartCoroutine (Transition ());
         }
-
         IEnumerator Transition () {
             DontDestroyOnLoad (gameObject);
             // Fade in the canvas group

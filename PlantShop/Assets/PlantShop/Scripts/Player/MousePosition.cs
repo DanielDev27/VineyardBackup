@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
 public class MousePosition : MonoBehaviour
 {
     public static MousePosition Instance;
@@ -15,10 +14,9 @@ public class MousePosition : MonoBehaviour
     {
         Instance = this;
     }
-
-    // Update is called once per frame
     void Update()
     {
+        //Reads the mouse position and sets the player image to that point
         PlayerToolManager.Instance.playerImage.transform.position = Mouse.current.position.ReadValue();
         Ray ray = camera.ScreenPointToRay(Mouse.current.position.ReadValue());
         //Debug.Log(ray);
@@ -26,8 +24,8 @@ public class MousePosition : MonoBehaviour
         {
             point = raycastHitGeneral.point;
             transform.position = point;
-            Debug.DrawRay(ray.origin, point - ray.origin, Color.black);
-            if (Physics.Raycast(ray, out RaycastHit raycastHitInteract, Mathf.Infinity, interactionLayer))
+            Debug.DrawRay(ray.origin, point - ray.origin, Color.black);//Traces a line/ray to the point it hits the layer
+            if (Physics.Raycast(ray, out RaycastHit raycastHitInteract, Mathf.Infinity, interactionLayer))//sets the debug bool true or false
             {
                 canInteract = true;
             }
@@ -37,5 +35,4 @@ public class MousePosition : MonoBehaviour
             }
         }
     }
-
 }
