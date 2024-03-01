@@ -714,6 +714,7 @@ MonoBehaviour:
   - {fileID: 7268497901050741381}
   - {fileID: 598152407133572945}
   - {fileID: 6508243681183107468}
+  actionTimerMax: 5
   wateringTimerActive: 0
   wateringPromptTimer: 0
   wateringTimerBase: 15

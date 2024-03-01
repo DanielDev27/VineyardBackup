@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -20,6 +21,7 @@ public class FieldManager : MonoBehaviour
     [SerializeField] public List<Image> timerImages;
 
     [Header("Timers")]
+    [SerializeField] float actionTimerMax;
     [SerializeField] public bool wateringTimerActive;
     [SerializeField] public float wateringPromptTimer;
     [SerializeField] public float wateringTimerBase;
@@ -58,7 +60,7 @@ public class FieldManager : MonoBehaviour
     {
         if (GameManager.Instance.timerActive)
         {
-
+            //Action Timers waiting
             if (wateringTimerActive)
             {
                 wateringPromptTimer += Time.deltaTime;
@@ -71,29 +73,36 @@ public class FieldManager : MonoBehaviour
             {
                 pestControlPromptTimer += Time.deltaTime;
             }
+            //Action Timers Count Down
+            if (timerImages[0].isActiveAndEnabled)
+            {
+                timerImages[0].fillAmount -= Time.deltaTime / actionTimerMax;
+            }
+            if (timerImages[1].isActiveAndEnabled)
+            {
+                timerImages[1].fillAmount -= Time.deltaTime / actionTimerMax;
+            }
+            if (timerImages[2].isActiveAndEnabled)
+            {
+                timerImages[2].fillAmount -= Time.deltaTime / actionTimerMax;
+            }
         }
+        //Water Action Trigger
         if (wateringPromptTimer >= wateringTimer & wateringTimerActive)
         {
             wateringTimerActive = false;
-            foreach (GameObject _field in GameManager.Instance.fields)
-            {
-                _field.GetComponent<FieldManager>().TriggerPromptImage(Tool.WateringTool);
-            }
+            TriggerPromptImage(Tool.WateringTool);
         }
+        //Pruning Action Trigger
         if (pruningPromptTimer >= pruningTimer & pruningTimerActive)
         {
-            foreach (GameObject _field in GameManager.Instance.fields)
-            {
-                _field.GetComponent<FieldManager>().TriggerPromptImage(Tool.PruningTool);
-            }
             pruningTimerActive = false;
+            TriggerPromptImage(Tool.PruningTool);
         }
+        //Pest Control Trigger
         if (pestControlPromptTimer >= pestControlTimer & pestControlTimerActive)
         {
-            foreach (GameObject _field in GameManager.Instance.fields)
-            {
-                _field.GetComponent<FieldManager>().TriggerPromptImage(Tool.PestControlTool);
-            }
+            TriggerPromptImage(Tool.PestControlTool);
             pestControlTimerActive = false;
         }
     }
@@ -142,18 +151,21 @@ public class FieldManager : MonoBehaviour
                 //promptCanvas.GetComponentInChildren<TMP_Text>().text = "Watering Tool";
                 promptImages[0].enabled = true;
                 timerImages[0].enabled = true;
+                timerImages[0].fillAmount = actionTimerMax;
                 break;
             case Tool.PruningTool:
                 requirePruningTool = true;
                 //promptCanvas.GetComponentInChildren<TMP_Text>().text = "Pruning Tool";
                 promptImages[1].enabled = true;
                 timerImages[1].enabled = true;
+                timerImages[1].fillAmount = actionTimerMax;
                 break;
             case Tool.PestControlTool:
                 requirePestControlTool = true;
                 //promptCanvas.GetComponentInChildren<TMP_Text>().text = "Pest Control Tool";
                 promptImages[2].enabled = true;
                 timerImages[2].enabled = true;
+                timerImages[2].fillAmount = actionTimerMax;
                 break;
             default:
                 break;
@@ -161,6 +173,7 @@ public class FieldManager : MonoBehaviour
         }
         //promptCanvas.GetComponentInChildren<TMP_Text>().enabled = true;
     }
+
     public void ClosePromptImage(int promptIndex)
     {
         //promptCanvas.GetComponentInChildren<TMP_Text>().enabled = false;
