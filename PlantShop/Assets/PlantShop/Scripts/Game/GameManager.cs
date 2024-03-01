@@ -26,7 +26,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         ChangeFieldAssets();
-        SeasonUIManager.Instance.UpdateUIContent(yearsCount);
+        SeasonUIManager.Instance.UpdateYear(yearsCount);
+        SeasonUIManager.Instance.UpdateSeason(currentSeason.season);
     }
     void Update()
     {
@@ -56,6 +57,7 @@ public class GameManager : MonoBehaviour
             SeasonsSO nextSeason = seasons[seasons.IndexOf(currentSeason) + 1];
             currentSeason = nextSeason;
         }
+        SeasonUIManager.Instance.UpdateSeason(currentSeason.season);
         //Timers
         if (currentSeason == seasons[1] || currentSeason == seasons[2])
         {
@@ -72,19 +74,20 @@ public class GameManager : MonoBehaviour
 
             }
         }
-        foreach (GameObject _field in fields)
-        {
-            _field.GetComponent<FieldManager>().ResetPromptTimers(currentSeason);
-        }
-
         seasonsCount++;
         if (seasonsCount % 4 == 0 && seasonsCount != 0)
         {
             yearsCount++;
         }
 
+        SeasonUIManager.Instance.UpdateYear(yearsCount);
+        SeasonUIManager.Instance.UpdateSeason(currentSeason.season);
         ChangeFieldAssets();
-        SeasonUIManager.Instance.UpdateUIContent(yearsCount);
+        foreach (GameObject _field in fields)
+        {
+            _field.GetComponent<FieldManager>().ResetPromptTimers(currentSeason);
+        }
+
     }
 
     public void ChangeFieldAssets()

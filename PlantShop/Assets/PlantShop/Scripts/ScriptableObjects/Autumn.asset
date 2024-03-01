@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83c2950bffadff841a2d8f477ff25195, type: 3}
   m_Name: Autumn
   m_EditorClassIdentifier: 
+  season: 1
   growthModifier: 0.75
   pestModifier: 0.8
   pruningModifier: 1

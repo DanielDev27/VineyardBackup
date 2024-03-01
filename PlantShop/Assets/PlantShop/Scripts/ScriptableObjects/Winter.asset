@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83c2950bffadff841a2d8f477ff25195, type: 3}
   m_Name: Winter
   m_EditorClassIdentifier: 
+  season: 2
   growthModifier: 0.5
   pestModifier: 0.5
   pruningModifier: 1.2
