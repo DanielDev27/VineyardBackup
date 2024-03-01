@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using DG.Tweening;
 
 public class SeasonUIManager : MonoBehaviour
 {
@@ -72,10 +70,10 @@ public class SeasonUIManager : MonoBehaviour
                 toolHighlight[0].enabled = true;
                 break;
             case 2:
-                toolHighlight[1].enabled = true;
+                toolHighlight[2].enabled = true;
                 break;
             case 3:
-                toolHighlight[2].enabled = true;
+                toolHighlight[1].enabled = true;
                 break;
             default:
                 break;

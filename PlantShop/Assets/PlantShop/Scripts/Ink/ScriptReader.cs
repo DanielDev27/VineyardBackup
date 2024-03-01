@@ -4,7 +4,6 @@ using UnityEngine;
 using Ink.Runtime;
 using TMPro;
 using Sirenix.OdinInspector;
-using System;
 
 public class ScriptReader : MonoBehaviour
 {
@@ -33,6 +32,7 @@ public class ScriptReader : MonoBehaviour
         tutorialCanvas.enabled = true;
         _story = new Story(_inkJsonAsset.text);
         _story.BindExternalFunction("Highlight", (int tutorialIndex) => SeasonUIManager.Instance.SetHighlight(tutorialIndex));
+        _story.BindExternalFunction("Action", (int tutorialIndex) => GameManager.Instance.SetPrompts(tutorialIndex));
     }
 
     public void DisplayNextLine()

@@ -15,9 +15,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] List<SeasonsSO> seasons;
     [Header("Seasons Tracker")]
     [SerializeField] int totalSeasons;
-    [SerializeField] int seasonsCount;
+    [SerializeField] public int seasonsCount;
     [SerializeField] int yearsCount;
     [SerializeField] public SeasonsSO currentSeason;
+    [SerializeField] int tutorialTaskCount;
     private void Awake()
     {
         Instance = this;
@@ -70,7 +71,6 @@ public class GameManager : MonoBehaviour
                 _field.GetComponent<FieldManager>().wateringTimerActive = true;
                 _field.GetComponent<FieldManager>().pruningTimerActive = true;
                 _field.GetComponent<FieldManager>().pestControlTimerActive = true;
-
             }
         }
         seasonsCount++;
@@ -89,13 +89,62 @@ public class GameManager : MonoBehaviour
         }
 
     }
-
     public void ChangeFieldAssets()
     {
         List<FieldManager> fieldManagers = new List<FieldManager>(FindObjectsOfType<FieldManager>());
         foreach (FieldManager field in fieldManagers)
         {
             field.UpdateField(seasonsCount);
+        }
+    }
+
+    public void SetPrompts(int _tutorialIndex)
+    {
+        timerActive = true;
+        switch (_tutorialIndex)
+        {
+            case 1:
+                foreach (GameObject _field in fields)
+                {
+                    _field.GetComponent<FieldManager>().wateringTimerActive = true;
+                }
+                break;
+            case 2:
+                foreach (GameObject _field in fields)
+                {
+                    _field.GetComponent<FieldManager>().wateringTimerActive = true;
+                    _field.GetComponent<FieldManager>().pestControlTimerActive = true;
+                }
+                break;
+            case 3:
+                foreach (GameObject _field in fields)
+                {
+                    _field.GetComponent<FieldManager>().wateringTimerActive = true;
+                    _field.GetComponent<FieldManager>().pruningTimerActive = true;
+                    _field.GetComponent<FieldManager>().pestControlTimerActive = true;
+                }
+                break;
+            default:
+                break;
+        }
+    }
+    public void TutorialTaskComplete()
+    {
+        tutorialTaskCount++;
+        if (seasonsCount == 0 && tutorialTaskCount == 3)
+        {
+            tutorialTaskCount = 0;
+            ChangeSeasons();
+        }
+        if (seasonsCount == 1 && tutorialTaskCount == 6)
+        {
+            tutorialTaskCount = 0;
+            ChangeSeasons();
+        }
+        if (seasonsCount == 2 && tutorialTaskCount == 9)
+        {
+            tutorialTaskCount = 0;
+            ChangeSeasons();
         }
     }
 }

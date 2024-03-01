@@ -16,4 +16,4 @@ MonoBehaviour:
   growthModifier: 1
   pestModifier: 1
   pruningModifier: 1
-  waterModifier: 1
+  waterModifier: 0.1

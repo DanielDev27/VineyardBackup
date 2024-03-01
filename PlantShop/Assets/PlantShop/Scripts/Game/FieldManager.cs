@@ -1,8 +1,5 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -164,15 +161,36 @@ public class FieldManager : MonoBehaviour
         {
             case 0:
                 requireWateringTool = false;
-                ResetWateringPrompt();
+                if (GameManager.Instance.seasonsCount == 0 || GameManager.Instance.seasonsCount == 1 || GameManager.Instance.seasonsCount == 2)
+                {
+                    GameManager.Instance.TutorialTaskComplete();
+                }
+                if (GameManager.Instance.seasonsCount != 0 && GameManager.Instance.seasonsCount != 1 && GameManager.Instance.seasonsCount != 2)
+                {
+                    ResetWateringPrompt();
+                }
                 break;
             case 1:
                 requirePruningTool = false;
-                ResetPruningPrompt();
+                if (GameManager.Instance.seasonsCount == 0 || GameManager.Instance.seasonsCount == 1 || GameManager.Instance.seasonsCount == 2)
+                {
+                    GameManager.Instance.TutorialTaskComplete();
+                }
+                if (GameManager.Instance.seasonsCount != 0 && GameManager.Instance.seasonsCount != 1 && GameManager.Instance.seasonsCount != 2)
+                {
+                    ResetWateringPrompt();
+                }
                 break;
             case 2:
                 requirePestControlTool = false;
-                ResetPestControlPrompt();
+                if (GameManager.Instance.seasonsCount == 0 || GameManager.Instance.seasonsCount == 1 || GameManager.Instance.seasonsCount == 2)
+                {
+                    GameManager.Instance.TutorialTaskComplete();
+                }
+                if (GameManager.Instance.seasonsCount != 0 && GameManager.Instance.seasonsCount != 1 && GameManager.Instance.seasonsCount != 2)
+                {
+                    ResetWateringPrompt();
+                }
                 break;
             default:
                 break;

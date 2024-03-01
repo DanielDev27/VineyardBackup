@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   season: 2
   growthModifier: 1
-  pestModifier: 1
+  pestModifier: 0.5
   pruningModifier: 1
-  waterModifier: 1
+  waterModifier: 0.15
