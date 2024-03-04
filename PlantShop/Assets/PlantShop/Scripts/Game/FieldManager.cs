@@ -20,15 +20,20 @@ public class FieldManager : MonoBehaviour
     [SerializeField] public List<Image> timerImages;
 
     [Header("Timers")]
-    [SerializeField] float actionTimerMax;
+    [Header("Water Timers")]
+    [SerializeField] float waterActionTimer;
     [SerializeField] public bool wateringTimerActive;
     [SerializeField] public float wateringPromptTimer;
     [SerializeField] public float wateringTimerBase;
     [SerializeField] public float wateringTimer;
+    [Header("Pest Control Timers")]
+    [SerializeField] float pestControlActionTimer;
     [SerializeField] public bool pestControlTimerActive;
     [SerializeField] public float pestControlPromptTimer;
     [SerializeField] public float pestControlTimerBase;
     [SerializeField] public float pestControlTimer;
+    [Header("Pruning Timers")]
+    [SerializeField] float pruningActionTimer;
     [SerializeField] public bool pruningTimerActive;
     [SerializeField] public float pruningPromptTimer;
     [SerializeField] public float pruningTimerBase;
@@ -78,15 +83,27 @@ public class FieldManager : MonoBehaviour
             //Action Timers for reaction priority - Count Down
             if (timerImages[0].isActiveAndEnabled)
             {
-                timerImages[0].fillAmount -= Time.deltaTime / actionTimerMax;
+                timerImages[0].fillAmount -= Time.deltaTime / waterActionTimer;
+                if (timerImages[0].fillAmount <= 0)
+                {
+                    ClosePromptImage(0, false);
+                }
             }
             if (timerImages[1].isActiveAndEnabled)
             {
-                timerImages[1].fillAmount -= Time.deltaTime / actionTimerMax;
+                timerImages[1].fillAmount -= Time.deltaTime / pruningActionTimer;
+                if (timerImages[1].fillAmount <= 0)
+                {
+                    ClosePromptImage(1, false);
+                }
             }
             if (timerImages[2].isActiveAndEnabled)
             {
-                timerImages[2].fillAmount -= Time.deltaTime / actionTimerMax;
+                timerImages[2].fillAmount -= Time.deltaTime / pestControlActionTimer;
+                if (timerImages[2].fillAmount <= 0)
+                {
+                    ClosePromptImage(2, false);
+                }
             }
         }
         //Water Action Trigger
@@ -131,7 +148,7 @@ public class FieldManager : MonoBehaviour
         UpdateField(0);
     }
     [Button]
-    public void UpdateField(int vineIndex)//Change the vine prefabs in the vine holders
+    public void UpdateField(int seasonIndex)//Change the vine prefabs in the vine holders
     {
         foreach (GameObject _vine in vineAssets)
         {
@@ -143,10 +160,9 @@ public class FieldManager : MonoBehaviour
                     DestroyImmediate(_vineExisting.gameObject, true);
                 }
                 //Create new Model instance
-                _vine.GetComponent<Vine>().vinePrefab = Instantiate(vinePrefabs[vineIndex], _vine.transform.position + Vector3.up * vinesOffset, Quaternion.identity);
+                _vine.GetComponent<Vine>().vinePrefab = Instantiate(vinePrefabs[seasonIndex], _vine.transform.position + Vector3.up * vinesOffset, Quaternion.identity);
                 _vine.GetComponent<Vine>().vinePrefab.transform.parent = _vine.transform;
                 _vine.GetComponent<Vine>().vinePrefab.transform.forward = _vine.transform.up;
-
             }
         }
     }
@@ -159,26 +175,31 @@ public class FieldManager : MonoBehaviour
                 requireWateringTool = true;
                 promptImages[0].enabled = true;
                 timerImages[0].enabled = true;
-                timerImages[0].fillAmount = actionTimerMax;
+                timerImages[0].fillAmount = 1;
                 break;
             case Tool.PruningTool:
                 requirePruningTool = true;
                 promptImages[1].enabled = true;
                 timerImages[1].enabled = true;
-                timerImages[1].fillAmount = actionTimerMax;
+                timerImages[1].fillAmount = 1;
                 break;
             case Tool.PestControlTool:
                 requirePestControlTool = true;
                 promptImages[2].enabled = true;
                 timerImages[2].enabled = true;
-                timerImages[2].fillAmount = actionTimerMax;
+                timerImages[2].fillAmount = 1;
                 break;
             default:
                 break;
         }
     }
-
-    public void ClosePromptImage(int promptIndex)//Close and turn off the prompt images and timers
+    public void SetActionTimers(SeasonsSO season)
+    {
+        waterActionTimer = season.waterActionModifier;
+        pruningActionTimer = season.pruningActionModifier;
+        pestControlActionTimer = season.pestActionModifier;
+    }
+    public void ClosePromptImage(int promptIndex, bool taskComplete)//Close and turn off the prompt images and timers
     {
         promptImages[promptIndex].enabled = false;
         timerImages[promptIndex].enabled = false;

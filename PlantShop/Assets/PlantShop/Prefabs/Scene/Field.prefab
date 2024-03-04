@@ -714,15 +714,17 @@ MonoBehaviour:
   - {fileID: 7268497901050741381}
   - {fileID: 598152407133572945}
   - {fileID: 6508243681183107468}
-  actionTimerMax: 5
+  waterActionTimer: 5
   wateringTimerActive: 0
   wateringPromptTimer: 0
   wateringTimerBase: 15
   wateringTimer: 0
+  pestControlActionTimer: 5
   pestControlTimerActive: 0
   pestControlPromptTimer: 0
   pestControlTimerBase: 20
   pestControlTimer: 0
+  pruningActionTimer: 5
   pruningTimerActive: 0
   pruningPromptTimer: 0
   pruningTimerBase: 25

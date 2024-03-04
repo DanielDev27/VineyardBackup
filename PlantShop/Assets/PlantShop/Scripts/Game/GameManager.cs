@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -78,6 +77,7 @@ public class GameManager : MonoBehaviour
                 _field.GetComponent<FieldManager>().wateringTimerActive = true;
                 _field.GetComponent<FieldManager>().pruningTimerActive = true;
                 _field.GetComponent<FieldManager>().pestControlTimerActive = true;
+                _field.GetComponent<FieldManager>().SetActionTimers(currentSeason);
             }
         }
         seasonsCount++;

@@ -20,17 +20,17 @@ public class EventClick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
         if (field.requireWateringTool && PlayerToolManager.Instance.assignedTool == Tool.WateringTool && field.promptImages[0].enabled == true)
         {//Used the watering tool where it's needed
             Debug.Log("Watering Tool Used");
-            field.ClosePromptImage(0);
+            field.ClosePromptImage(0, true);
         }
         if (field.requirePruningTool && PlayerToolManager.Instance.assignedTool == Tool.PruningTool && field.promptImages[1].enabled == true)
         {//Used the pruning tool where it's needed
             Debug.Log("Pruning Tool Used");
-            field.ClosePromptImage(1);
+            field.ClosePromptImage(1, true);
         }
         if (field.requirePestControlTool && PlayerToolManager.Instance.assignedTool == Tool.PestControlTool && field.promptImages[2].enabled == true)
         {//Used the pest control tool where it's needed
             Debug.Log("Pest Control Tool Used");
-            field.ClosePromptImage(2);
+            field.ClosePromptImage(2, true);
         }
         else
         {
