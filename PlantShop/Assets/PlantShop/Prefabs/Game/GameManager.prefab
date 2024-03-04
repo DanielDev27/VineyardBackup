@@ -47,18 +47,6 @@ MonoBehaviour:
   timer: 0
   seasonTimerMax: 60
   timerActive: 0
-  wateringTimerActive: 0
-  wateringPromptTimer: 0
-  wateringTimerBase: 15
-  wateringTimer: 0
-  pestControlTimerActive: 0
-  pestControlPromptTimer: 0
-  pestControlTimerBase: 25
-  pestControlTimer: 0
-  pruningTimerActive: 0
-  pruningPromptTimer: 0
-  pruningTimerBase: 20
-  pruningTimer: 0
   fields:
   - {fileID: 0}
   - {fileID: 0}
@@ -67,10 +55,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 20f1128e475b91741b39cd4aaccaab4c, type: 2}
   - {fileID: 11400000, guid: c40f0dd90f07240429e54d14a3d7652e, type: 2}
   - {fileID: 11400000, guid: c5130f56cdcaa6c4b95d637121328924, type: 2}
-  - {fileID: 11400000, guid: e452ddd27c1aca7449dfb93596ce72e2, type: 2}
   - {fileID: 11400000, guid: 38d431673e6e57a4d9e1909c13353138, type: 2}
   - {fileID: 11400000, guid: ae32f5705594f004d8091067a9036835, type: 2}
   - {fileID: 11400000, guid: e46667579c4cab3479f66801381567e9, type: 2}
+  - {fileID: 11400000, guid: e452ddd27c1aca7449dfb93596ce72e2, type: 2}
   totalSeasons: 0
   seasonsCount: 0
+  yearsCount: 0
   currentSeason: {fileID: 0}
+  tutorialTaskCount: 0
