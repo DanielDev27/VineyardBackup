@@ -210,6 +210,7 @@ public class FieldManager : MonoBehaviour
                 if (GameManager.Instance.seasonsCount == 0 || GameManager.Instance.seasonsCount == 1 || GameManager.Instance.seasonsCount == 2)
                 {
                     GameManager.Instance.TutorialTaskComplete();
+                    wateringPromptTimer = 0;
                 }
                 if (GameManager.Instance.seasonsCount != 0 && GameManager.Instance.seasonsCount != 1 && GameManager.Instance.seasonsCount != 2)
                 {
@@ -221,6 +222,7 @@ public class FieldManager : MonoBehaviour
                 if (GameManager.Instance.seasonsCount == 0 || GameManager.Instance.seasonsCount == 1 || GameManager.Instance.seasonsCount == 2)
                 {
                     GameManager.Instance.TutorialTaskComplete();
+                    pruningPromptTimer = 0;
                 }
                 if (GameManager.Instance.seasonsCount != 0 && GameManager.Instance.seasonsCount != 1 && GameManager.Instance.seasonsCount != 2)
                 {
@@ -232,6 +234,7 @@ public class FieldManager : MonoBehaviour
                 if (GameManager.Instance.seasonsCount == 0 || GameManager.Instance.seasonsCount == 1 || GameManager.Instance.seasonsCount == 2)
                 {
                     GameManager.Instance.TutorialTaskComplete();
+                    pestControlPromptTimer = 0;
                 }
                 if (GameManager.Instance.seasonsCount != 0 && GameManager.Instance.seasonsCount != 1 && GameManager.Instance.seasonsCount != 2)
                 {
@@ -242,14 +245,14 @@ public class FieldManager : MonoBehaviour
                 break;
         }
     }
-    internal void ResetPromptTimers(SeasonsSO currentSeason)//Reset the prompt timers at the end of a season
+    internal void UpdateActionTimers(SeasonsSO currentSeason)//Reset the prompt timers at the end of a season
     {
         wateringTimer = wateringTimerBase * currentSeason.waterModifier;
-        wateringPromptTimer = 0;
+        //wateringPromptTimer = 0;
         pruningTimer = pruningTimerBase * currentSeason.pruningModifier;
-        pruningPromptTimer = 0;
+        //pruningPromptTimer = 0;
         pestControlTimer = pestControlTimerBase * currentSeason.pestModifier;
-        pestControlPromptTimer = 0;
+        //pestControlPromptTimer = 0;
     }
 
     //Reset Timers after completing the task

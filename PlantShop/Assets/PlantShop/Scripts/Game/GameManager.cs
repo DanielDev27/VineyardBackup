@@ -29,6 +29,10 @@ public class GameManager : MonoBehaviour
         ChangeFieldAssets();//Spawn Vines
         SeasonUIManager.Instance.UpdateYear(yearsCount);
         SeasonUIManager.Instance.UpdateSeason(currentSeason.season);
+        foreach (GameObject _field in fields)
+        {
+            _field.GetComponent<FieldManager>().SetActionTimers(currentSeason);
+        }
     }
     void Update()
     {
@@ -40,7 +44,6 @@ public class GameManager : MonoBehaviour
         //Reset timer and Change Season
         if (timer > seasonTimerMax)
         {
-            timer = 0;
             ChangeSeasons();
         }
         if (fields[0].GetComponent<FieldManager>().fieldHealth + fields[1].GetComponent<FieldManager>().fieldHealth + fields[2].GetComponent<FieldManager>().fieldHealth <= 0)
@@ -53,6 +56,7 @@ public class GameManager : MonoBehaviour
     public void ChangeSeasons()
     {
         //Debug.Log(seasons.Count);
+        timer = 0;
         //Seasons
         if (currentSeason == seasons[seasons.Count - 1])
         {//Reset back to 4th season if you reach the end of the list
@@ -97,10 +101,12 @@ public class GameManager : MonoBehaviour
             SeasonUIManager.Instance.UpdateYear(yearsCount);
             SeasonUIManager.Instance.UpdateSeason(currentSeason.season);
             ChangeFieldAssets();
-            foreach (GameObject _field in fields)
-            {//Reset all the timers in the fields
-                _field.GetComponent<FieldManager>().ResetPromptTimers(currentSeason);
-            }
+        }
+        foreach (GameObject _field in fields)
+        {
+            //Reset all the timers in the fields
+            _field.GetComponent<FieldManager>().UpdateActionTimers(currentSeason);
+            _field.GetComponent<FieldManager>().SetActionTimers(currentSeason);
         }
     }
     public void ChangeFieldAssets()//Call an update to the vine assets in each field

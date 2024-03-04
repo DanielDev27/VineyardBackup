@@ -18,7 +18,7 @@ public class MainMenuManager : MonoBehaviour
     }
     private void Start()
     {
-        AudioManager.Instance.PlayMainMenu();
+        //AudioManager.Instance.PlayMainMenu();
     }
     public void SwitchToLoadingScreen()
     {

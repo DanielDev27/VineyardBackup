@@ -5,53 +5,30 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
-    [SerializeField] AudioSource RatRoam;
-    [SerializeField] AudioSource RatChase;
-    [SerializeField] AudioSource MainMenuAmbience;
-    [SerializeField] AudioSource GameOver;
+    [SerializeField] AudioSource Music1;
+    [SerializeField] AudioSource Music2;
+    //[SerializeField] AudioSource MainMenuAmbience;
+    //[SerializeField] AudioSource GameOver;
 
     private void Start()
     {
         Instance = this;
+        Music1.Play();
     }
-    public void PlayRatRoam()
+    private void Update()
     {
-        if (!RatRoam.isPlaying)
+        if (!Music1.isPlaying && !Music2.isActiveAndEnabled)
         {
-            RatRoam.Play();
-            RatChase.Pause();
-            MainMenuAmbience.Stop();
-            GameOver.Stop();
+            Music1.enabled = false;
+            Music2.enabled = true;
+            Music2.Play();
+        }
+        if (!Music2.isPlaying && !Music1.isActiveAndEnabled)
+        {
+            Music2.enabled = false;
+            Music1.enabled = true;
+            Music1.Play();
         }
     }
-    public void PlayRatChase()
-    {
-        if (!RatChase.isPlaying)
-        {
-            RatRoam.Pause();
-            RatChase.Play();
-            MainMenuAmbience.Stop();
-            GameOver.Stop();
-        }
-    }
-    public void PlayMainMenu()
-    {
-        if (!MainMenuAmbience.isPlaying)
-        {
-            RatRoam.Pause();
-            RatChase.Pause();
-            MainMenuAmbience.Play();
-            GameOver.Stop();
-        }
-    }
-    public void PlayGameOver()
-    {
-        if (!GameOver.isPlaying)
-        {
-            RatRoam.Pause();
-            RatChase.Pause();
-            MainMenuAmbience.Stop();
-            GameOver.Play();
-        }
-    }
+
 }

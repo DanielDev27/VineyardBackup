@@ -18,5 +18,5 @@ MonoBehaviour:
   pruningModifier: 1
   waterModifier: 0.8
   pestActionModifier: 5
-  pruningActionModifier: 5
+  pruningActionModifier: 10
   waterActionModifier: 5
