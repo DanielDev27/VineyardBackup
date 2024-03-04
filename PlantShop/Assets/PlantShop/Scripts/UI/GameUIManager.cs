@@ -6,10 +6,9 @@ using UnityEngine.InputSystem;
 public class GameUIManager : MonoBehaviour
 {
     public static GameUIManager Instance;
+    [Header("Pause Menu")]
     [SerializeField] bool isMenuActive;
-
     public bool pause;
-
     bool isPauseRoutineRunning;
     [SerializeField] int menuScene;
     [SerializeField] CanvasGroup pauseGroup;
@@ -17,6 +16,10 @@ public class GameUIManager : MonoBehaviour
 
     [Header("Tutorial")]
     [SerializeField] Canvas tutorialCanvas;
+    [Header("GameComplete")]
+    [SerializeField] Canvas gameComplete;
+    [Header("Game Lost")]
+    [SerializeField] Canvas gameLost;
     private void Awake()
     {
         Instance = this;
@@ -70,5 +73,14 @@ public class GameUIManager : MonoBehaviour
         Time.timeScale = 0f;
         yield return new WaitForSeconds(0.01f);
         isPauseRoutineRunning = false;
+    }
+
+    public void GameComplete()
+    {
+        gameComplete.enabled = true;
+    }
+    public void GameLost()
+    {
+        gameLost.enabled = true;
     }
 }

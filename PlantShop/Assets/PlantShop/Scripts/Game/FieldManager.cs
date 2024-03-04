@@ -111,7 +111,14 @@ public class FieldManager : MonoBehaviour
 
     public void fieldHealthModify(int healthChange)//update the Field health
     {
-        fieldHealth += healthChange;
+        if (fieldHealth <= 0)
+        {
+            fieldHealth = 0;
+        }
+        else
+        {
+            fieldHealth += healthChange;
+        }
     }
 
     [Button]

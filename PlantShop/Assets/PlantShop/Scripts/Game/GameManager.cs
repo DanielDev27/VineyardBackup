@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -43,6 +44,11 @@ public class GameManager : MonoBehaviour
             timer = 0;
             ChangeSeasons();
         }
+        if (fields[0].GetComponent<FieldManager>().fieldHealth + fields[1].GetComponent<FieldManager>().fieldHealth + fields[2].GetComponent<FieldManager>().fieldHealth <= 0)
+        {
+            GameUIManager.Instance.GameLost();
+            timerActive = false;
+        }
     }
     [Button]
     public void ChangeSeasons()
@@ -79,14 +85,22 @@ public class GameManager : MonoBehaviour
         {//If 4 seasons pass, increase the year
             yearsCount++;
         }
-
-        ScriptReader.Instance.LoadTutorial(seasonsCount);//Load the tutorial based on the season
-        SeasonUIManager.Instance.UpdateYear(yearsCount);
-        SeasonUIManager.Instance.UpdateSeason(currentSeason.season);
-        ChangeFieldAssets();
-        foreach (GameObject _field in fields)
-        {//Reset all the timers in the fields
-            _field.GetComponent<FieldManager>().ResetPromptTimers(currentSeason);
+        if (seasonsCount == 12)
+        {
+            GameUIManager.Instance.GameComplete();
+            timerActive = false;
+            return;
+        }
+        else
+        {
+            ScriptReader.Instance.LoadTutorial(seasonsCount);//Load the tutorial based on the season
+            SeasonUIManager.Instance.UpdateYear(yearsCount);
+            SeasonUIManager.Instance.UpdateSeason(currentSeason.season);
+            ChangeFieldAssets();
+            foreach (GameObject _field in fields)
+            {//Reset all the timers in the fields
+                _field.GetComponent<FieldManager>().ResetPromptTimers(currentSeason);
+            }
         }
     }
     public void ChangeFieldAssets()//Call an update to the vine assets in each field
