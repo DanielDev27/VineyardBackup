@@ -8,6 +8,7 @@ public class SeasonUIManager : MonoBehaviour
     public static SeasonUIManager Instance;
     [Header("Seasons")]
     [SerializeField] List<Image> seasonImage;
+    [SerializeField] float fadeAmount;
     [Header("Years")]
     [SerializeField] Image yearImage;
     [SerializeField] int yearIndex;
@@ -30,28 +31,28 @@ public class SeasonUIManager : MonoBehaviour
         switch (season)
         {
             case Season.Summer:
-                seasonImage[0].color = new Color(seasonImage[0].color.r, seasonImage[0].color.g, seasonImage[0].color.b, 0.5f);
+                seasonImage[0].color = new Color(seasonImage[0].color.r, seasonImage[0].color.g, seasonImage[0].color.b, fadeAmount);
                 seasonImage[1].color = new Color(seasonImage[1].color.r, seasonImage[1].color.g, seasonImage[1].color.b, 1f);
-                seasonImage[2].color = new Color(seasonImage[2].color.r, seasonImage[2].color.g, seasonImage[2].color.b, 0.5f);
-                seasonImage[3].color = new Color(seasonImage[3].color.r, seasonImage[3].color.g, seasonImage[3].color.b, 0.5f);
+                seasonImage[2].color = new Color(seasonImage[2].color.r, seasonImage[2].color.g, seasonImage[2].color.b, fadeAmount);
+                seasonImage[3].color = new Color(seasonImage[3].color.r, seasonImage[3].color.g, seasonImage[3].color.b, fadeAmount);
                 break;
             case Season.Autumn:
-                seasonImage[0].color = new Color(seasonImage[0].color.r, seasonImage[0].color.g, seasonImage[0].color.b, 0.5f);//Spring
-                seasonImage[1].color = new Color(seasonImage[1].color.r, seasonImage[1].color.g, seasonImage[1].color.b, 0.5f);//Summer
+                seasonImage[0].color = new Color(seasonImage[0].color.r, seasonImage[0].color.g, seasonImage[0].color.b, fadeAmount);//Spring
+                seasonImage[1].color = new Color(seasonImage[1].color.r, seasonImage[1].color.g, seasonImage[1].color.b, fadeAmount);//Summer
                 seasonImage[2].color = new Color(seasonImage[2].color.r, seasonImage[2].color.g, seasonImage[2].color.b, 1f);//Autumn
-                seasonImage[3].color = new Color(seasonImage[3].color.r, seasonImage[3].color.g, seasonImage[3].color.b, 0.5f);//Winter
+                seasonImage[3].color = new Color(seasonImage[3].color.r, seasonImage[3].color.g, seasonImage[3].color.b, fadeAmount);//Winter
                 break;
             case Season.Winter:
-                seasonImage[0].color = new Color(seasonImage[0].color.r, seasonImage[0].color.g, seasonImage[0].color.b, 0.5f);//Spring
-                seasonImage[1].color = new Color(seasonImage[1].color.r, seasonImage[1].color.g, seasonImage[1].color.b, 0.5f);//Summer
-                seasonImage[2].color = new Color(seasonImage[2].color.r, seasonImage[2].color.g, seasonImage[2].color.b, 0.5f);//Autumn
+                seasonImage[0].color = new Color(seasonImage[0].color.r, seasonImage[0].color.g, seasonImage[0].color.b, fadeAmount);//Spring
+                seasonImage[1].color = new Color(seasonImage[1].color.r, seasonImage[1].color.g, seasonImage[1].color.b, fadeAmount);//Summer
+                seasonImage[2].color = new Color(seasonImage[2].color.r, seasonImage[2].color.g, seasonImage[2].color.b, fadeAmount);//Autumn
                 seasonImage[3].color = new Color(seasonImage[3].color.r, seasonImage[3].color.g, seasonImage[3].color.b, 1f);//Winter
                 break;
             case Season.Spring:
                 seasonImage[0].color = new Color(seasonImage[0].color.r, seasonImage[0].color.g, seasonImage[0].color.b, 1f);//Spring
-                seasonImage[1].color = new Color(seasonImage[1].color.r, seasonImage[1].color.g, seasonImage[1].color.b, 0.5f);//Summer
-                seasonImage[2].color = new Color(seasonImage[2].color.r, seasonImage[2].color.g, seasonImage[2].color.b, 0.5f);//Autumn
-                seasonImage[3].color = new Color(seasonImage[3].color.r, seasonImage[3].color.g, seasonImage[3].color.b, 0.5f);//Winter
+                seasonImage[1].color = new Color(seasonImage[1].color.r, seasonImage[1].color.g, seasonImage[1].color.b, fadeAmount);//Summer
+                seasonImage[2].color = new Color(seasonImage[2].color.r, seasonImage[2].color.g, seasonImage[2].color.b, fadeAmount);//Autumn
+                seasonImage[3].color = new Color(seasonImage[3].color.r, seasonImage[3].color.g, seasonImage[3].color.b, fadeAmount);//Winter
                 break;
             default:
                 break;

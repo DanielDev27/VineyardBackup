@@ -693,7 +693,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fieldHealth: 0
   fieldHealthBase: 50
-  vinesOffset: 0.075
+  vinesOffsetX: -0.075
+  vinesOffsetY: 0.075
   vineAssets: []
   vineHolder: {fileID: 3191554691800194276, guid: b64dc7faed2fb974b8e0cdacc47e4f4e,
     type: 3}
@@ -726,17 +727,14 @@ MonoBehaviour:
   waterActionTimer: 5
   wateringTimerActive: 0
   wateringPromptTimer: 0
-  wateringTimerBase: 15
   wateringTimer: 0
   pestControlActionTimer: 5
   pestControlTimerActive: 0
   pestControlPromptTimer: 0
-  pestControlTimerBase: 20
   pestControlTimer: 0
   pruningActionTimer: 5
   pruningTimerActive: 0
   pruningPromptTimer: 0
-  pruningTimerBase: 25
   pruningTimer: 0
 --- !u!65 &2560428539721959300
 BoxCollider:

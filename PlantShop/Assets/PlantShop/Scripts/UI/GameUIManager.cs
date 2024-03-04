@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class GameUIManager : MonoBehaviour
 {
@@ -13,6 +14,11 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] int menuScene;
     [SerializeField] CanvasGroup pauseGroup;
     [SerializeField] CanvasGroup loadingGroup;
+    [Header("Tool Buttons")]
+    [SerializeField] Color selectedColor;
+    [SerializeField] Image waterBackground;
+    [SerializeField] Image pruningBackground;
+    [SerializeField] Image pestBackground;
 
     [Header("Tutorial")]
     [SerializeField] Canvas tutorialCanvas;
@@ -83,4 +89,26 @@ public class GameUIManager : MonoBehaviour
     {
         gameLost.enabled = true;
     }
+
+    //ToolButtons
+
+    public void SetWaterSelected()
+    {
+        waterBackground.color = selectedColor;
+        pruningBackground.color = Color.white;
+        pestBackground.color = Color.white;
+    }
+    public void SetPruningSelected()
+    {
+        waterBackground.color = Color.white;
+        pruningBackground.color = selectedColor;
+        pestBackground.color = Color.white;
+    }
+    public void SetPestSelected()
+    {
+        waterBackground.color = Color.white;
+        pruningBackground.color = Color.white;
+        pestBackground.color = selectedColor;
+    }
+
 }
