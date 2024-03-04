@@ -55,7 +55,6 @@ public class GameManager : MonoBehaviour
     [Button]
     public void ChangeSeasons()
     {
-        //Debug.Log(seasons.Count);
         timer = 0;
         //Seasons
         if (currentSeason == seasons[seasons.Count - 1])
@@ -69,6 +68,7 @@ public class GameManager : MonoBehaviour
         }
         SeasonUIManager.Instance.UpdateSeason(currentSeason.season);
         //Timers
+
         if (currentSeason == seasons[1] || currentSeason == seasons[2])
         {//Timer isn't active during tutorials
             timerActive = false;
@@ -89,7 +89,8 @@ public class GameManager : MonoBehaviour
         {//If 4 seasons pass, increase the year
             yearsCount++;
         }
-        if (seasonsCount == 12)
+
+        if (seasonsCount == totalSeasons)
         {
             GameUIManager.Instance.GameComplete();
             timerActive = false;
@@ -105,7 +106,7 @@ public class GameManager : MonoBehaviour
         foreach (GameObject _field in fields)
         {
             //Reset all the timers in the fields
-            _field.GetComponent<FieldManager>().UpdateActionTimers(currentSeason);
+            _field.GetComponent<FieldManager>().UpdateSpawnTimers(currentSeason);
             _field.GetComponent<FieldManager>().SetActionTimers(currentSeason);
         }
     }

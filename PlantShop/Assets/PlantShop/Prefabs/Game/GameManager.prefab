@@ -59,7 +59,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ae32f5705594f004d8091067a9036835, type: 2}
   - {fileID: 11400000, guid: e46667579c4cab3479f66801381567e9, type: 2}
   - {fileID: 11400000, guid: e452ddd27c1aca7449dfb93596ce72e2, type: 2}
-  totalSeasons: 0
+  totalSeasons: 13
   seasonsCount: 0
   yearsCount: 0
   currentSeason: {fileID: 0}

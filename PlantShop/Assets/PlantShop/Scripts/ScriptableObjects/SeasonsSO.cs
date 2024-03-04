@@ -5,10 +5,10 @@ public class SeasonsSO : ScriptableObject
 {
     public Season season;
     public float growthModifier;
-    //Spawning Timer modifiers
-    public float pestModifier;
-    public float pruningModifier;
-    public float waterModifier;
+    //Spawning Timers
+    public float pestSpawnTimer;
+    public float pruningSpawnTimer;
+    public float waterSpawnTimer;
     //Response Timer Modifiers
     public float pestActionModifier;
     public float pruningActionModifier;

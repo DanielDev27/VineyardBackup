@@ -693,24 +693,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fieldHealth: 0
   fieldHealthBase: 50
-  vinesOffset: 0.2
+  vinesOffset: 0.075
   vineAssets: []
   vineHolder: {fileID: 3191554691800194276, guid: b64dc7faed2fb974b8e0cdacc47e4f4e,
     type: 3}
   vinePrefabs:
-  - {fileID: 7868578364611701189, guid: b3761c2fad91dc94ea59030195f890c6, type: 3}
-  - {fileID: 1080821471000813320, guid: a095c3e35acc12d4c8cb4772c0bd6e65, type: 3}
-  - {fileID: 72279655853808836, guid: f6da96634f97ccf4d87e40aa2c6858a9, type: 3}
-  - {fileID: 447511580150463746, guid: e247ba97629cd8047b39510029bdf115, type: 3}
-  - {fileID: 1963598519543719781, guid: 696cdc5958b63b2438724ee2ffd9f725, type: 3}
-  - {fileID: 7880716585711382555, guid: a8ead88ea4a687d4ca0394d037766887, type: 3}
-  - {fileID: 7387284244171933458, guid: 0d076ccd29f261d499fd4a8cdbe1ba7f, type: 3}
-  - {fileID: 7898437828255439625, guid: 5666f33f5cf8e1f45a161185630a35c4, type: 3}
-  - {fileID: 457753431887506810, guid: bf20d78a0cb15d94cbf01d6aa0d03ff9, type: 3}
-  - {fileID: 6719214037778052593, guid: 259eab049a7ff104193e0283e4b0b2ad, type: 3}
-  - {fileID: 4717230811415856807, guid: 637518dd424a00040a052a86b264227f, type: 3}
-  - {fileID: 7159443231378356090, guid: e22b7eae7ec5dfa439ab8e42385bc496, type: 3}
-  - {fileID: 7934941123888572863, guid: 2afa728965d1f3a4799717526bfdc76d, type: 3}
+  - {fileID: 2930178970610035584, guid: b3761c2fad91dc94ea59030195f890c6, type: 3}
+  - {fileID: 5130064713700053729, guid: a095c3e35acc12d4c8cb4772c0bd6e65, type: 3}
+  - {fileID: 5893599243935421444, guid: f6da96634f97ccf4d87e40aa2c6858a9, type: 3}
+  - {fileID: 5889314275006525653, guid: e247ba97629cd8047b39510029bdf115, type: 3}
+  - {fileID: 135514574023667826, guid: 9da3123c9ecdcd54b991aa439dd31933, type: 3}
+  - {fileID: 8944960741028069099, guid: a8ead88ea4a687d4ca0394d037766887, type: 3}
+  - {fileID: 7050707478864845185, guid: 0d076ccd29f261d499fd4a8cdbe1ba7f, type: 3}
+  - {fileID: 4252086840305847787, guid: 5666f33f5cf8e1f45a161185630a35c4, type: 3}
+  - {fileID: 7164788386312992434, guid: b6bf049e1c91d574da3085d37f046eac, type: 3}
+  - {fileID: 6534802924858770290, guid: 259eab049a7ff104193e0283e4b0b2ad, type: 3}
+  - {fileID: 7794133017222586986, guid: 637518dd424a00040a052a86b264227f, type: 3}
+  - {fileID: 8856479258636543283, guid: e22b7eae7ec5dfa439ab8e42385bc496, type: 3}
+  - {fileID: 7319546511476644899, guid: 2afa728965d1f3a4799717526bfdc76d, type: 3}
   requireWateringTool: 0
   requirePruningTool: 0
   requirePestControlTool: 0

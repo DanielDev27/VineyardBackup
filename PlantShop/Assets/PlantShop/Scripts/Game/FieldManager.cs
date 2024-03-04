@@ -24,19 +24,16 @@ public class FieldManager : MonoBehaviour
     [SerializeField] float waterActionTimer;
     [SerializeField] public bool wateringTimerActive;
     [SerializeField] public float wateringPromptTimer;
-    [SerializeField] public float wateringTimerBase;
     [SerializeField] public float wateringTimer;
     [Header("Pest Control Timers")]
     [SerializeField] float pestControlActionTimer;
     [SerializeField] public bool pestControlTimerActive;
     [SerializeField] public float pestControlPromptTimer;
-    [SerializeField] public float pestControlTimerBase;
     [SerializeField] public float pestControlTimer;
     [Header("Pruning Timers")]
     [SerializeField] float pruningActionTimer;
     [SerializeField] public bool pruningTimerActive;
     [SerializeField] public float pruningPromptTimer;
-    [SerializeField] public float pruningTimerBase;
     [SerializeField] public float pruningTimer;
 
     private void Awake()
@@ -46,9 +43,9 @@ public class FieldManager : MonoBehaviour
     void Start()
     {
         //Assign the water timers limits
-        wateringTimer = wateringTimerBase * GameManager.Instance.currentSeason.waterModifier;
-        pruningTimer = pruningTimerBase * GameManager.Instance.currentSeason.pruningModifier;
-        pestControlTimer = pestControlTimerBase * GameManager.Instance.currentSeason.pestModifier;
+        wateringTimer = GameManager.Instance.currentSeason.waterSpawnTimer;
+        pruningTimer = GameManager.Instance.currentSeason.pruningSpawnTimer;
+        pestControlTimer = GameManager.Instance.currentSeason.pestSpawnTimer;
         //Set the health of the field
         fieldHealth = fieldHealthBase;
         //Set the canvases to look at the camera
@@ -193,12 +190,6 @@ public class FieldManager : MonoBehaviour
                 break;
         }
     }
-    public void SetActionTimers(SeasonsSO season)
-    {
-        waterActionTimer = season.waterActionModifier;
-        pruningActionTimer = season.pruningActionModifier;
-        pestControlActionTimer = season.pestActionModifier;
-    }
     public void ClosePromptImage(int promptIndex, bool taskComplete)//Close and turn off the prompt images and timers
     {
         promptImages[promptIndex].enabled = false;
@@ -226,7 +217,7 @@ public class FieldManager : MonoBehaviour
                 }
                 if (GameManager.Instance.seasonsCount != 0 && GameManager.Instance.seasonsCount != 1 && GameManager.Instance.seasonsCount != 2)
                 {
-                    ResetWateringPrompt();
+                    ResetPruningPrompt();
                 }
                 break;
             case 2:
@@ -238,21 +229,25 @@ public class FieldManager : MonoBehaviour
                 }
                 if (GameManager.Instance.seasonsCount != 0 && GameManager.Instance.seasonsCount != 1 && GameManager.Instance.seasonsCount != 2)
                 {
-                    ResetWateringPrompt();
+                    ResetPestControlPrompt();
                 }
                 break;
             default:
                 break;
         }
     }
-    internal void UpdateActionTimers(SeasonsSO currentSeason)//Reset the prompt timers at the end of a season
+    public void SetActionTimers(SeasonsSO season)
     {
-        wateringTimer = wateringTimerBase * currentSeason.waterModifier;
-        //wateringPromptTimer = 0;
-        pruningTimer = pruningTimerBase * currentSeason.pruningModifier;
-        //pruningPromptTimer = 0;
-        pestControlTimer = pestControlTimerBase * currentSeason.pestModifier;
-        //pestControlPromptTimer = 0;
+        waterActionTimer = season.waterActionModifier;
+        pruningActionTimer = season.pruningActionModifier;
+        pestControlActionTimer = season.pestActionModifier;
+    }
+    internal void UpdateSpawnTimers(SeasonsSO currentSeason)//Reset the prompt timers at the end of a season
+    {
+        //Assign the water timers limits
+        wateringTimer = currentSeason.waterSpawnTimer;
+        pruningTimer = currentSeason.pruningSpawnTimer;
+        pestControlTimer = currentSeason.pestSpawnTimer;
     }
 
     //Reset Timers after completing the task

@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   season: 0
   growthModifier: 1
-  pestModifier: 1
-  pruningModifier: 0.5
-  waterModifier: 0.15
+  pestSpawnTimer: 15
+  pruningSpawnTimer: 25
+  waterSpawnTimer: 5
   pestActionModifier: 15
   pruningActionModifier: 15
   waterActionModifier: 15
