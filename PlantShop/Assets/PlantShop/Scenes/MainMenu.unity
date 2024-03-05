@@ -418,11 +418,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 489351707614822446, guid: 6da7cc0a2e845ea4eafd8d34c9076831,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1815385043432394431, guid: 6da7cc0a2e845ea4eafd8d34c9076831,
         type: 3}
       propertyPath: loadingMenu
@@ -437,127 +432,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MainMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 6259244424112216013, guid: 6da7cc0a2e845ea4eafd8d34c9076831,
-        type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: b4597b12ef65cd14595cb5986f793320,
-        type: 2}
-    - target: {fileID: 6259244424112216013, guid: 6da7cc0a2e845ea4eafd8d34c9076831,
-        type: 3}
-      propertyPath: m_fontColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6259244424112216013, guid: 6da7cc0a2e845ea4eafd8d34c9076831,
-        type: 3}
-      propertyPath: m_fontColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6259244424112216013, guid: 6da7cc0a2e845ea4eafd8d34c9076831,
-        type: 3}
-      propertyPath: m_fontColor.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6259244424112216013, guid: 6da7cc0a2e845ea4eafd8d34c9076831,
-        type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 8777256374300296168, guid: b4597b12ef65cd14595cb5986f793320,
-        type: 2}
-    - target: {fileID: 6259244424112216013, guid: 6da7cc0a2e845ea4eafd8d34c9076831,
-        type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 4278190080
-      objectReference: {fileID: 0}
-    - target: {fileID: 6259244424112216013, guid: 6da7cc0a2e845ea4eafd8d34c9076831,
-        type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6723573141444123941, guid: 6da7cc0a2e845ea4eafd8d34c9076831,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7582470386951229504, guid: 6da7cc0a2e845ea4eafd8d34c9076831,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7629806873752522426, guid: 6da7cc0a2e845ea4eafd8d34c9076831,
-        type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: b4597b12ef65cd14595cb5986f793320,
-        type: 2}
-    - target: {fileID: 7629806873752522426, guid: 6da7cc0a2e845ea4eafd8d34c9076831,
-        type: 3}
-      propertyPath: m_fontColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7629806873752522426, guid: 6da7cc0a2e845ea4eafd8d34c9076831,
-        type: 3}
-      propertyPath: m_fontColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7629806873752522426, guid: 6da7cc0a2e845ea4eafd8d34c9076831,
-        type: 3}
-      propertyPath: m_fontColor.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7629806873752522426, guid: 6da7cc0a2e845ea4eafd8d34c9076831,
-        type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 8777256374300296168, guid: b4597b12ef65cd14595cb5986f793320,
-        type: 2}
-    - target: {fileID: 7629806873752522426, guid: 6da7cc0a2e845ea4eafd8d34c9076831,
-        type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 4278190080
-      objectReference: {fileID: 0}
-    - target: {fileID: 7629806873752522426, guid: 6da7cc0a2e845ea4eafd8d34c9076831,
-        type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8587724866886230988, guid: 6da7cc0a2e845ea4eafd8d34c9076831,
-        type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: b4597b12ef65cd14595cb5986f793320,
-        type: 2}
-    - target: {fileID: 8587724866886230988, guid: 6da7cc0a2e845ea4eafd8d34c9076831,
-        type: 3}
-      propertyPath: m_fontColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8587724866886230988, guid: 6da7cc0a2e845ea4eafd8d34c9076831,
-        type: 3}
-      propertyPath: m_fontColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8587724866886230988, guid: 6da7cc0a2e845ea4eafd8d34c9076831,
-        type: 3}
-      propertyPath: m_fontColor.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8587724866886230988, guid: 6da7cc0a2e845ea4eafd8d34c9076831,
-        type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 8777256374300296168, guid: b4597b12ef65cd14595cb5986f793320,
-        type: 2}
-    - target: {fileID: 8587724866886230988, guid: 6da7cc0a2e845ea4eafd8d34c9076831,
-        type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 4278190080
-      objectReference: {fileID: 0}
-    - target: {fileID: 8587724866886230988, guid: 6da7cc0a2e845ea4eafd8d34c9076831,
-        type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8707120929457185467, guid: 6da7cc0a2e845ea4eafd8d34c9076831,
         type: 3}
@@ -894,9 +768,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4944859712804627160, guid: a312f82c8c19801479b79c6391998699,
+    - target: {fileID: 2394054332010838361, guid: a312f82c8c19801479b79c6391998699,
         type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1264278534}
     - target: {fileID: 6703024072227585243, guid: a312f82c8c19801479b79c6391998699,
