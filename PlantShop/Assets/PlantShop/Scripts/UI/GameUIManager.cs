@@ -22,6 +22,13 @@ public class GameUIManager : MonoBehaviour
 
     [Header("Tutorial")]
     [SerializeField] Canvas tutorialCanvas;
+    [Header("GradingUI")]
+    [SerializeField] Canvas gradingUI;
+    [SerializeField] Animator gradingAnimator;
+    [SerializeField] float zeroStarMax = 0;
+    [SerializeField] float oneStarMax = 0;
+    [SerializeField] float twoStarMax = 0;
+
     [Header("GameComplete")]
     [SerializeField] Canvas gameComplete;
     [Header("Game Lost")]
@@ -81,6 +88,28 @@ public class GameUIManager : MonoBehaviour
         isPauseRoutineRunning = false;
     }
 
+    public void GradeUI(float score)
+    {
+        gradingUI.enabled = true;
+        switch (score)
+        {
+            case float i when i <= zeroStarMax://Zero stars - Didn't lose the game, but didn't make a good wine
+                gradingAnimator.SetBool("Idle", true);
+                break;
+            case float i when i > zeroStarMax && i <= oneStarMax://One Star - Managed to make a wine, but still not great
+                gradingAnimator.SetBool("1Star", true);
+                break;
+            case float i when i > oneStarMax && i <= twoStarMax://Two Stars - Did fairly well
+                gradingAnimator.SetBool("2Star", true);
+                break;
+            case float i when i > twoStarMax://Three stars - Did very well
+                gradingAnimator.SetBool("3Star", true);
+                break;
+            default:
+                break;
+        }
+
+    }
     public void GameComplete()
     {
         gameComplete.enabled = true;
