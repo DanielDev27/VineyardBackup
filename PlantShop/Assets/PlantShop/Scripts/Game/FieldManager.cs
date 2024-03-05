@@ -21,6 +21,8 @@ public class FieldManager : MonoBehaviour
     [SerializeField] public List<Image> timerImages;
 
     [Header("Timers")]
+    [SerializeField] float timerNegOffset;
+    [SerializeField] float timerPosOffset;
     [Header("Water Timers")]
     [SerializeField] float waterActionTimer;
     [SerializeField] public bool wateringTimerActive;
@@ -44,9 +46,9 @@ public class FieldManager : MonoBehaviour
     void Start()
     {
         //Assign the water timers limits
-        wateringTimer = GameManager.Instance.currentSeason.waterSpawnTimer;
-        pruningTimer = GameManager.Instance.currentSeason.pruningSpawnTimer;
-        pestControlTimer = GameManager.Instance.currentSeason.pestSpawnTimer;
+        wateringTimer = GameManager.Instance.currentSeason.waterSpawnTimer + UnityEngine.Random.Range(timerNegOffset, timerPosOffset);
+        pruningTimer = GameManager.Instance.currentSeason.pruningSpawnTimer + UnityEngine.Random.Range(timerNegOffset, timerPosOffset);
+        pestControlTimer = GameManager.Instance.currentSeason.pestSpawnTimer + UnityEngine.Random.Range(timerNegOffset, timerPosOffset);
         //Set the health of the field
         fieldHealth = fieldHealthBase;
         //Set the canvases to look at the camera
@@ -249,9 +251,9 @@ public class FieldManager : MonoBehaviour
     internal void UpdateSpawnTimers(SeasonsSO currentSeason)//Reset the prompt timers at the end of a season
     {
         //Assign the water timers limits
-        wateringTimer = currentSeason.waterSpawnTimer;
-        pruningTimer = currentSeason.pruningSpawnTimer;
-        pestControlTimer = currentSeason.pestSpawnTimer;
+        wateringTimer = currentSeason.waterSpawnTimer + UnityEngine.Random.Range(timerNegOffset, timerPosOffset);
+        pruningTimer = currentSeason.pruningSpawnTimer + UnityEngine.Random.Range(timerNegOffset, timerPosOffset);
+        pestControlTimer = currentSeason.pestSpawnTimer + UnityEngine.Random.Range(timerNegOffset, timerPosOffset);
     }
 
     //Reset Timers after completing the task

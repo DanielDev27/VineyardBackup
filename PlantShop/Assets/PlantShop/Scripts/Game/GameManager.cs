@@ -65,15 +65,11 @@ public class GameManager : MonoBehaviour
     {
         timer = 0;
         //Seasons
-        if (currentSeason == seasons[seasons.Count - 1])
-        {//Reset back to 4th season if you reach the end of the list
-            currentSeason = seasons[3];
-        }
-        else
-        {//Increase the season index and assign the new season
-            SeasonsSO nextSeason = seasons[seasons.IndexOf(currentSeason) + 1];
-            currentSeason = nextSeason;
-        }
+
+        //Increase the season index and assign the new season
+        SeasonsSO nextSeason = seasons[seasons.IndexOf(currentSeason) + 1];
+        currentSeason = nextSeason;
+
         SeasonUIManager.Instance.UpdateSeason(currentSeason.season);
         //Timers
 

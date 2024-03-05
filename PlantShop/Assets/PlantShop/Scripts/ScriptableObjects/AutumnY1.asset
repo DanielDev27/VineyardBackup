@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 83c2950bffadff841a2d8f477ff25195, type: 3}
-  m_Name: Summer
+  m_Name: AutumnY1
   m_EditorClassIdentifier: 
-  season: 0
-  growthModifier: 1.5
-  pestSpawnTimer: 20
-  pruningSpawnTimer: 30
+  season: 1
+  growthModifier: 0.75
+  pestSpawnTimer: 40
+  pruningSpawnTimer: 20
   waterSpawnTimer: 15
-  pestActionModifier: 5
-  pruningActionModifier: 10
-  waterActionModifier: 5
+  pestActionModifier: 10
+  pruningActionModifier: 5
+  waterActionModifier: 10

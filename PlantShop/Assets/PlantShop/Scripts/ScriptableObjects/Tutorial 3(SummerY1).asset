@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 83c2950bffadff841a2d8f477ff25195, type: 3}
-  m_Name: Tutorial 2
+  m_Name: Tutorial 3(SummerY1)
   m_EditorClassIdentifier: 
-  season: 3
+  season: 0
   growthModifier: 1
   pestSpawnTimer: 15
-  pruningSpawnTimer: 0
+  pruningSpawnTimer: 25
   waterSpawnTimer: 5
   pestActionModifier: 15
   pruningActionModifier: 15

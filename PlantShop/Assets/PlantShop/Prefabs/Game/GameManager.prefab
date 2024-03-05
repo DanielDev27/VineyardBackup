@@ -46,6 +46,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   promptFail: -30
   promptSuccess: 15
+  fieldScores:
+  - 0
+  - 0
+  - 0
   timer: 0
   seasonTimerMax: 60
   timerActive: 0
@@ -58,10 +62,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c40f0dd90f07240429e54d14a3d7652e, type: 2}
   - {fileID: 11400000, guid: c5130f56cdcaa6c4b95d637121328924, type: 2}
   - {fileID: 11400000, guid: 38d431673e6e57a4d9e1909c13353138, type: 2}
-  - {fileID: 11400000, guid: ae32f5705594f004d8091067a9036835, type: 2}
+  - {fileID: 11400000, guid: 61549e91f225f2846a6425e78707831f, type: 2}
   - {fileID: 11400000, guid: e46667579c4cab3479f66801381567e9, type: 2}
   - {fileID: 11400000, guid: e452ddd27c1aca7449dfb93596ce72e2, type: 2}
-  totalSeasons: 13
+  - {fileID: 11400000, guid: f02a6275ec28c114bb902ef76a8d1af2, type: 2}
+  - {fileID: 11400000, guid: ae32f5705594f004d8091067a9036835, type: 2}
+  - {fileID: 11400000, guid: 24a4132fb28c86e4fbb6f86e1cf99dce, type: 2}
+  - {fileID: 11400000, guid: bb89f35af273ac544b7f859c41b83502, type: 2}
+  - {fileID: 11400000, guid: f5cdd7caefd00c34b817fe71e3c8cd61, type: 2}
+  totalSeasons: 12
   seasonsCount: 0
   yearsCount: 0
   currentSeason: {fileID: 0}
