@@ -44,6 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd27c194bda82564e8f6b8c5df160d22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  promptFail: -30
+  promptSuccess: 15
   timer: 0
   seasonTimerMax: 60
   timerActive: 0

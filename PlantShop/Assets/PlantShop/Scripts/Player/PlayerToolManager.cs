@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-
 public class PlayerToolManager : MonoBehaviour
 {
     public static PlayerToolManager Instance;

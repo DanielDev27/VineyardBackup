@@ -84,6 +84,7 @@ public class FieldManager : MonoBehaviour
                 timerImages[0].fillAmount -= Time.deltaTime / waterActionTimer;
                 if (timerImages[0].fillAmount <= 0)
                 {
+                    fieldHealthModify(GameManager.Instance.promptFail);
                     ClosePromptImage(0, false);
                 }
             }
@@ -92,6 +93,7 @@ public class FieldManager : MonoBehaviour
                 timerImages[1].fillAmount -= Time.deltaTime / pruningActionTimer;
                 if (timerImages[1].fillAmount <= 0)
                 {
+                    fieldHealthModify(GameManager.Instance.promptFail);
                     ClosePromptImage(1, false);
                 }
             }
@@ -100,6 +102,7 @@ public class FieldManager : MonoBehaviour
                 timerImages[2].fillAmount -= Time.deltaTime / pestControlActionTimer;
                 if (timerImages[2].fillAmount <= 0)
                 {
+                    fieldHealthModify(GameManager.Instance.promptFail);
                     ClosePromptImage(2, false);
                 }
             }
@@ -124,7 +127,7 @@ public class FieldManager : MonoBehaviour
         }
     }
 
-    public void fieldHealthModify(int healthChange)//update the Field health
+    public void fieldHealthModify(float healthChange)//update the Field health
     {
         if (fieldHealth <= 0)
         {

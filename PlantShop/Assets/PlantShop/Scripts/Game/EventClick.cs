@@ -10,10 +10,6 @@ public class EventClick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
     {
         field = this.GetComponent<FieldManager>();//Sets the field manager that the script is attached to
     }
-    void Update()
-    {
-
-    }
     public void OnPointerDown(PointerEventData eventData)//Reactions to clicking
     {
         //Debug.Log("Interact with " + this.gameObject.name);
@@ -21,16 +17,19 @@ public class EventClick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
         {//Used the watering tool where it's needed
             Debug.Log("Watering Tool Used");
             field.ClosePromptImage(0, true);
+            field.fieldHealthModify(GameManager.Instance.promptSuccess);
         }
         if (field.requirePruningTool && PlayerToolManager.Instance.assignedTool == Tool.PruningTool && field.promptImages[1].enabled == true)
         {//Used the pruning tool where it's needed
             Debug.Log("Pruning Tool Used");
             field.ClosePromptImage(1, true);
+            field.fieldHealthModify(GameManager.Instance.promptSuccess);
         }
         if (field.requirePestControlTool && PlayerToolManager.Instance.assignedTool == Tool.PestControlTool && field.promptImages[2].enabled == true)
         {//Used the pest control tool where it's needed
             Debug.Log("Pest Control Tool Used");
             field.ClosePromptImage(2, true);
+            field.fieldHealthModify(GameManager.Instance.promptSuccess);
         }
         else
         {

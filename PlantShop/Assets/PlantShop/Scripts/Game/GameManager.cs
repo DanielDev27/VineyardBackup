@@ -6,6 +6,10 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+    [Header("Score Modifiers")]
+    [SerializeField] public float promptFail;
+    [SerializeField] public float promptSuccess;
+    [SerializeField] float[] fieldScores = new float[3];
     [Header("Timer")]
     [SerializeField] float timer;
     [SerializeField] float seasonTimerMax;
@@ -19,6 +23,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] int yearsCount;
     [SerializeField] public SeasonsSO currentSeason;
     [SerializeField] int tutorialTaskCount;
+
+
     private void Awake()
     {
         Instance = this;
@@ -33,6 +39,7 @@ public class GameManager : MonoBehaviour
         {
             _field.GetComponent<FieldManager>().SetActionTimers(currentSeason);
         }
+        fieldScores = new float[] { fields[0].GetComponent<FieldManager>().fieldHealth, fields[1].GetComponent<FieldManager>().fieldHealth, fields[2].GetComponent<FieldManager>().fieldHealth };
     }
     void Update()
     {
@@ -46,11 +53,12 @@ public class GameManager : MonoBehaviour
         {
             ChangeSeasons();
         }
-        if (fields[0].GetComponent<FieldManager>().fieldHealth + fields[1].GetComponent<FieldManager>().fieldHealth + fields[2].GetComponent<FieldManager>().fieldHealth <= 0)
+        if (timerActive && fields[0].GetComponent<FieldManager>().fieldHealth + fields[1].GetComponent<FieldManager>().fieldHealth + fields[2].GetComponent<FieldManager>().fieldHealth <= 0)
         {
             GameUIManager.Instance.GameLost();
             timerActive = false;
         }
+        fieldScores = new float[] { fields[0].GetComponent<FieldManager>().fieldHealth, fields[1].GetComponent<FieldManager>().fieldHealth, fields[2].GetComponent<FieldManager>().fieldHealth };
     }
     [Button]
     public void ChangeSeasons()
