@@ -695,6 +695,7 @@ MonoBehaviour:
   fieldHealthBase: 50
   vinesOffsetX: -0.075
   vinesOffsetY: 0.075
+  dirt: {fileID: 0}
   vineAssets: []
   vineHolder: {fileID: 3191554691800194276, guid: b64dc7faed2fb974b8e0cdacc47e4f4e,
     type: 3}

@@ -9,6 +9,7 @@ public class FieldManager : MonoBehaviour
     [SerializeField] float fieldHealthBase = 50;
     [SerializeField] float vinesOffsetX;
     [SerializeField] float vinesOffsetY;
+    [SerializeField] GameObject dirt;
     [SerializeField] public List<GameObject> vineAssets;
     [SerializeField] GameObject vineHolder;
     [SerializeField] List<GameObject> vinePrefabs;
@@ -153,19 +154,27 @@ public class FieldManager : MonoBehaviour
     [Button]
     public void UpdateField(int seasonIndex)//Change the vine prefabs in the vine holders
     {
-        foreach (GameObject _vine in vineAssets)
+        if (seasonIndex <= 12)
         {
-            if (_vine.TryGetComponent(out Vine component))
+
+            foreach (GameObject _vine in vineAssets)
             {
-                if (_vine.GetComponent<Vine>().vinePrefab != null)
-                {//Destroy the old prefab
-                    GameObject _vineExisting = _vine.GetComponent<Vine>().vinePrefab.gameObject;
-                    DestroyImmediate(_vineExisting.gameObject, true);
+                if (_vine.TryGetComponent(out Vine component))
+                {
+                    if (_vine.GetComponent<Vine>().vinePrefab != null)
+                    {//Destroy the old prefab
+                        GameObject _vineExisting = _vine.GetComponent<Vine>().vinePrefab.gameObject;
+                        DestroyImmediate(_vineExisting.gameObject, true);
+                    }
+                    //Create new Model instance
+                    _vine.GetComponent<Vine>().vinePrefab = Instantiate(vinePrefabs[seasonIndex], _vine.transform.position + new Vector3(vinesOffsetX, vinesOffsetY, 0), Quaternion.identity);
+                    _vine.GetComponent<Vine>().vinePrefab.transform.parent = _vine.transform;
+                    _vine.GetComponent<Vine>().vinePrefab.transform.forward = _vine.transform.up;
                 }
-                //Create new Model instance
-                _vine.GetComponent<Vine>().vinePrefab = Instantiate(vinePrefabs[seasonIndex], _vine.transform.position + new Vector3(vinesOffsetX, vinesOffsetY, 0), Quaternion.identity);
-                _vine.GetComponent<Vine>().vinePrefab.transform.parent = _vine.transform;
-                _vine.GetComponent<Vine>().vinePrefab.transform.forward = _vine.transform.up;
+            }
+            if (seasonIndex == 10)
+            {
+                dirt.SetActive(false);
             }
         }
     }

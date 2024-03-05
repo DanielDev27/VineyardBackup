@@ -70,6 +70,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 24a4132fb28c86e4fbb6f86e1cf99dce, type: 2}
   - {fileID: 11400000, guid: bb89f35af273ac544b7f859c41b83502, type: 2}
   - {fileID: 11400000, guid: f5cdd7caefd00c34b817fe71e3c8cd61, type: 2}
+  - {fileID: 11400000, guid: 30b958156e77e464086d45ef73a3ac08, type: 2}
   totalSeasons: 12
   seasonsCount: 0
   yearsCount: 0
