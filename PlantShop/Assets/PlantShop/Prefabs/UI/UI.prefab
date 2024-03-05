@@ -340,6 +340,7 @@ MonoBehaviour:
   pestBackground: {fileID: 484419762126090607}
   tutorialCanvas: {fileID: 5287106277393467327}
   gradingUI: {fileID: 1943589235312232922}
+  gradingAnimator: {fileID: 2238299776299050318}
   zeroStarMax: 100
   oneStarMax: 200
   twoStarMax: 300

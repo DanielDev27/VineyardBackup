@@ -3,7 +3,6 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
-
 public class GameUIManager : MonoBehaviour
 {
     public static GameUIManager Instance;
@@ -87,7 +86,6 @@ public class GameUIManager : MonoBehaviour
         yield return new WaitForSeconds(0.01f);
         isPauseRoutineRunning = false;
     }
-
     public void GradeUI(float score)
     {
         gradingUI.enabled = true;
@@ -108,7 +106,6 @@ public class GameUIManager : MonoBehaviour
             default:
                 break;
         }
-
     }
     public void GameComplete()
     {
