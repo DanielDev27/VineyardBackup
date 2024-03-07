@@ -18,18 +18,21 @@ public class EventClick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
             Debug.Log("Watering Tool Used");
             field.ClosePromptImage(0, true);
             field.fieldHealthModify(GameManager.Instance.promptSuccess);
+            SFXManager.Instance.PlayWateringClip();
         }
         if (field.requirePruningTool && PlayerToolManager.Instance.assignedTool == Tool.PruningTool && field.promptImages[1].enabled == true)
         {//Used the pruning tool where it's needed
             Debug.Log("Pruning Tool Used");
             field.ClosePromptImage(1, true);
             field.fieldHealthModify(GameManager.Instance.promptSuccess);
+            SFXManager.Instance.PlayPruningClip();
         }
         if (field.requirePestControlTool && PlayerToolManager.Instance.assignedTool == Tool.PestControlTool && field.promptImages[2].enabled == true)
         {//Used the pest control tool where it's needed
             Debug.Log("Pest Control Tool Used");
             field.ClosePromptImage(2, true);
             field.fieldHealthModify(GameManager.Instance.promptSuccess);
+            SFXManager.Instance.PlayPestControlClip();
         }
         else
         {
