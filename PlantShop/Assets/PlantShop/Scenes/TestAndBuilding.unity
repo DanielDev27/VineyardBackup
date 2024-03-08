@@ -695,6 +695,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 452631623645186788, guid: 31c56cbbffcde5e4592956b098ad811f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 709362160562024791, guid: 31c56cbbffcde5e4592956b098ad811f,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -705,10 +710,20 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 72492538}
+    - target: {fileID: 4218668385513516965, guid: 31c56cbbffcde5e4592956b098ad811f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4311724423018929707, guid: 31c56cbbffcde5e4592956b098ad811f,
         type: 3}
       propertyPath: m_Name
       value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 4622885958506321531, guid: 31c56cbbffcde5e4592956b098ad811f,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5106470562362452562, guid: 31c56cbbffcde5e4592956b098ad811f,
         type: 3}
